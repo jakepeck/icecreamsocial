@@ -14,6 +14,7 @@ from resources.user import Users, SingleUser
 
 app = Flask(__name__)
 CORS(app)
+api = Api(app)
 
 
 # Init db and migrate here
@@ -22,7 +23,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://localhost:5432/icecreamsoc
 app.config['SQLALCHEMY_ECHO'] = True
 
 # Init db and migrate here
-api = Api(app)
+
 db.init_app(app)
 migrate = Migrate(app, db)
 
