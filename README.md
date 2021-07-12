@@ -25,6 +25,7 @@ The database was created/managed using PostgreSQL (psql), in tandem with Flask S
 ### *Getting Started*
 
 To get started, sign up and login. From the navigation bar you can navigate to a variety of areas:
+* Post - Post a new recipe so that other users can salivate at your culinary expertise
 * Discover - This is essentially a master feed of all user's posts & activity so that users can find others to follow.
 * Favorites - See all the posts you've liked/favorited.
 * Feed - This feed is a customized feed, showing content posted by the users you are following.
