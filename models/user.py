@@ -31,6 +31,7 @@
 #     def find_one(cls, email):
 #         user = User.query.filter_by(email=email).first()
 #         return user
+from sqlalchemy.orm import backref
 from models.db import db
 from datetime import datetime
 
@@ -46,6 +47,8 @@ class User(db.Model):
         db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow(
     ), nullable=False, onupdate=datetime.utcnow)
+    recipes = db.relationship("Recipe", cascade='all',
+                              backref=db.backref('user', lazy=True))
 
     def __init__(self, username, email, password_digest):
         self.username = username

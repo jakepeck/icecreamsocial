@@ -1,3 +1,4 @@
+from models.recipe import Recipe
 from flask import Flask
 from flask_restful import Api
 from flask_cors import CORS
@@ -9,8 +10,10 @@ from flask_migrate import Migrate
 # from models.db import db
 from models.db import db
 from models.user import User
+from models.recipe import Recipe
 from resources.auth import Login, Register
 from resources.user import Users, SingleUser
+from resources.recipe import Recipes, RecipeDetail
 
 app = Flask(__name__)
 CORS(app)
@@ -37,6 +40,8 @@ api.add_resource(Login, '/auth/login')
 api.add_resource(Register, '/auth/register')
 api.add_resource(Users, '/users')
 api.add_resource(SingleUser, '/users/<int:id>')
+api.add_resource(Recipes, '/recipes')
+api.add_resource(RecipeDetail, '/recipes/<int:recipe_id>')
 
 if __name__ == '__main__':
     app.run(debug=True)
