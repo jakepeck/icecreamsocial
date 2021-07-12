@@ -10,6 +10,7 @@ from flask_migrate import Migrate
 from models.db import db
 from models.user import User
 from resources.auth import Login, Register
+from resources.user import Users, SingleUser
 
 app = Flask(__name__)
 CORS(app)
@@ -33,6 +34,8 @@ migrate = Migrate(app, db)
 # api.add_resource(comment.Comments,'/comments')
 api.add_resource(Login, '/auth/login')
 api.add_resource(Register, '/auth/register')
+api.add_resource(Users, '/users')
+api.add_resource(SingleUser, '/users/<int:id>')
 
 if __name__ == '__main__':
     app.run(debug=True)

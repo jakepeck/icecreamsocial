@@ -81,7 +81,7 @@ class Register(Resource):
     def post(self):
         data = request.get_json()
         params = {
-            "name": data['name'],
+            "username": data['username'],
             "email": data['email'],
             "password_digest": gen_password(data['password'])
         }
