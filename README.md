@@ -1,5 +1,5 @@
 # IceCreamSocial
-![image](https://i.imgur.com/mOkMAAG.png)
+![image](https://i.imgur.com/nyJDNaC.jpg)
 
 ### Creator: Jake Peck | [Trello Board](https://trello.com/b/Ho7KlCzQ/icecreamsocial)
 #### [Portfolio](https://jakepeck.dev) [LinkedIn]( https://www.linkedin.com/in/jake-peck/) | [GitHub](https://github.com/jakepeck)
