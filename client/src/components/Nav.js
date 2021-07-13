@@ -19,7 +19,7 @@ const Nav = (props) => {
       <div className="nav-links"><NavLink className="nav-link" to="/recipes">
           Recipes
         </NavLink>
-        <NavLink className="nav-link" to="/users">
+        <NavLink className="nav-link" to="/users/all">
           Users
         </NavLink>
         <NavLink className="nav-link" to="/reviews">

@@ -75,3 +75,9 @@ class RecipeSuperDetail(Resource):
         # # return {**recipe.json(), **user.json()}
         # # user = User.find_by_id(recipe.poster_id)
         # return {**recipe.json(), "recipe_poster": recipe_poster.json(), "comments": comments}
+
+
+class RecipesByUser(Resource):
+    def get(self, user_id):
+        recipes = Recipe.find_all_by_user_id(user_id)
+        return recipes, 200

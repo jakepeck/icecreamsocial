@@ -43,3 +43,8 @@ class Recipe(db.Model):
     def find_by_id(cls, recipe_id):
         recipe = Recipe.query.filter_by(id=recipe_id).first()
         return recipe
+
+    @classmethod
+    def find_all_by_user_id(cls, user_id):
+        recipes = Recipe.query.filter_by(poster_id=user_id)
+        return [r.json() for r in recipes]

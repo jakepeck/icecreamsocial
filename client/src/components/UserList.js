@@ -1,9 +1,3 @@
-const UserList = (props) => {
-  return (<div>UserList Component</div>)
-}
-
-export default UserList
-
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {
@@ -37,6 +31,13 @@ const UserList = (props) => {
      <Card key={idx}>
        <h1>{user.username}</h1>
        <p>{user.created_at}</p>
+       <button
+          onClick={() => {
+            props.fetchUserDetails(user.id)
+          }}
+        >
+          View User Details
+        </button>
      </Card>
     )
   })
@@ -60,6 +61,7 @@ const UserList = (props) => {
         'Click on a user to expand details'
       )}
       User List
+         
       <div className="grid">{usersMap}</div>
     </div>
   )
