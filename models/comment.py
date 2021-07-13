@@ -37,4 +37,4 @@ class Comment(db.Model):
     @classmethod
     def find_by_id(cls, comment_id):
         comment = Comment.query.filter_by(id=comment_id).first()
-        return comment.json()
+        return comment
