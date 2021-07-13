@@ -15,6 +15,8 @@ class Recipe(db.Model):
     ), nullable=False, onupdate=datetime.utcnow)
     poster_id = db.Column(
         db.Integer, db.ForeignKey('users.id'), nullable=False)
+    comments = db.relationship("Comment", cascade='all',
+                               backref=db.backref('recipe', lazy=True))
 
     def __init__(self, photo, title, content, poster_id):
         self.photo = photo
