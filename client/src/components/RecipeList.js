@@ -5,7 +5,7 @@ import {
   LoadSelectedRecipe
 } from '../store/actions/RecipeListActions'
 import {Card} from 'react-rainbow-components'
-import RainbowRecipeCard from './RainbowRecipeCard'
+import RecipeCard from './RecipeCard'
 
 
 const mapStateToProps = ({ recipeListState }) => {
@@ -49,7 +49,7 @@ const RecipeList = (props) => {
       //     View Recipe Details
       //   </button>
       // </Card>
-      <RainbowRecipeCard key={idx} recipe={recipe} fetchRecipeDetails={props.fetchRecipeDetails}/>
+      <RecipeCard key={idx} recipe={recipe} fetchRecipeDetails={props.fetchRecipeDetails}/>
     )
   })
 

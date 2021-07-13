@@ -13,7 +13,7 @@ import { Card, ButtonIcon, Button } from 'react-rainbow-components'
 //   height: '2.5rem'
 // }
 
-const RainbowRecipeCard = (props) => {
+const RecipeCard = (props) => {
   console.log(props)
 
   return ( 
@@ -73,5 +73,5 @@ const RainbowRecipeCard = (props) => {
   )
 }
 
-export default RainbowRecipeCard
+export default RecipeCard
 
