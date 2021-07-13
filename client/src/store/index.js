@@ -1,11 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import MovieListReducer from './reducers/MovieListReducer'
+import RecipeListReducer from './reducers/RecipeListReducer'
+import AppReducer from './reducers/AppReducer'
 
 const store = createStore(
   combineReducers({
-    movieListState: MovieListReducer
+    recipeListState: RecipeListReducer, appState: AppReducer
   }),
   composeWithDevTools(applyMiddleware(thunk))
 )

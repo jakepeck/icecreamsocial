@@ -2,23 +2,24 @@ import Client from './index'
 import { BASE_URL, axiosConfig } from '../globals'
 import axios from 'axios'
 
-export const GetMovieList = async () => {
+export const GetRecipeList = async () => {
   try {
-    console.log('get movies in movie service called')
-    const res = await Client.get('/discover/movie')
-    // const res = await Client.get('/discover/movie', axiosConfig)
+    console.log('get recipes in recipe list service called')
+    const res = await Client.get('/recipes')
+
     return res.data.results
   } catch (error) {
+  console.log(error)
     throw error
   }
 }
 
-export const SetSelectedMovie = async (movieId) => {
+export const SetSelectedRecipe = async (recipeId) => {
   try {
-    console.log('set selecettd movies in movie list service called')
-    console.log(movieId)
-    const res = await Client.get(`/movie/${movieId}`)
-    // const res = await Client.get(`/movie/${movieId}`, axiosConfig)
+    console.log('set selected recipes in recipe list service called')
+    console.log(recipeId)
+    const res = await Client.get(`/recipes/${movieId}`)
+    // const res = await Client.get(`/recipes/${movieId}`, axiosConfig)
     console.log(res.data)
     return res.data
   } catch (e) {

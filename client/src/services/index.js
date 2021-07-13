@@ -1,6 +1,6 @@
 import Axios from 'axios'
-import { BASE_URL, axiosConfig } from '../globals'
+import { BASE_URL } from '../globals'
 
-const Client = Axios.create({ baseURL: BASE_URL, axiosConfig })
+const Client = Axios.create({ baseURL: BASE_URL })
 
 export default Client

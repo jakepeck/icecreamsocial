@@ -1,42 +1,42 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {
-  LoadMovieList,
-  LoadSelectedMovie
-} from '../store/actions/MovieListActions'
-import { POSTER_PATH } from '../globals'
+  LoadRecipeList,
+  LoadSelectedRecipe
+} from '../store/actions/RecipeListActions'
 
-const mapStateToProps = ({ movieListState }) => {
-  return { movieListState }
+
+const mapStateToProps = ({ recipeListState }) => {
+  return { recipeListState }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMovieList: () => dispatch(LoadMovieList()),
-    fetchMovieDetails: (movieId) => dispatch(LoadSelectedMovie(movieId))
+    fetchRecipeList: () => dispatch(LoadRecipeList()),
+    fetchRecipeDetails: (recipeId) => dispatch(LoadSelectedRecipe(recipeId))
   }
 }
 
-const MovieList = (props) => {
+const RecipeList = (props) => {
   useEffect(() => {
-    props.fetchMovieList()
-  }, [props.movieListState.selectedMovie])
+    props.fetchRecipeList()
+  }, [props.recipeListState.selectedRecipe])
 
-  const moviesMap = props.movieListState.movies.map((movie, idx) => {
+  const recipesMap = props.recipeListState.recipes.map((recipe, idx) => {
     return (
-      <div key={movie.id} className="card">
-        {movie.title}{' '}
+      <div key={recipe.id} className="card">
+        {recipe.title}{' '}
         <img
-          src={`${POSTER_PATH}${movie.backdrop_path}`}
-          alt="poster"
+          src={`${recipe.photo}`}
+          alt="photo"
           width="200"
         />
         <button
           onClick={() => {
-            props.fetchMovieDetails(movie.id)
+            props.fetchRecipeDetails(recipe.id)
           }}
         >
-          View Movie Details
+          View Recipe Details
         </button>
       </div>
     )
@@ -44,30 +44,30 @@ const MovieList = (props) => {
 
   return (
     <div>
-      {props.movieListState.selectedMovie !== null ? (
-        <div className="movieDetails">
+      {props.recipeListState.selectedRecipe !== null ? (
+        <div className="recipeDetails">
           <img
-            src={`${POSTER_PATH}${props.movieListState.selectedMovie.backdrop_path}`}
-            alt="poster"
+            src={`${POSTER_PATH}${props.recipeListState.selectedRecipe.photo}`}
+            alt="photo"
             width="200"
           />
-          <h1>{props.movieListState.selectedMovie.title}</h1>
+          <h1>{props.recipeListState.selectedRecipe.title}</h1>
           <div>
             <h2>
-              Released on: {props.movieListState.selectedMovie.release_date}
+              {props.recipeListState.selectedRecipe.content}
             </h2>
-            <h2>{props.movieListState.selectedMovie.runtime} minutes</h2>
+           
           </div>
 
-          <p>{props.movieListState.selectedMovie.overview}</p>
+      
         </div>
       ) : (
-        'Click on a movie to expand details'
+        'Click on a recipe to expand details'
       )}
-      Movie List
-      <div className="grid">{moviesMap}</div>
+      Recipe List
+      <div className="grid">{recipesMap}</div>
     </div>
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieList)
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeList)
