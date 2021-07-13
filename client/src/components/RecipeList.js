@@ -28,12 +28,18 @@ const RecipeList = (props) => {
   const recipesMap = props.recipeListState.recipes.map((recipe, idx) => {
     return (
       <Card key={idx} className="card">
-        {recipe.title}{' '}
+        <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
         <img
           src={`${recipe.photo}`}
-          alt="photo"
+          alt="picture of dessert"
           width="200"
         />
+          <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
+          {recipe.title}{' '}
+          </h1>
+        </div>
+        
+        
         <button
           onClick={() => {
             props.fetchRecipeDetails(recipe.id)
