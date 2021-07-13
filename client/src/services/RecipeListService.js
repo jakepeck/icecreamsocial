@@ -4,7 +4,7 @@ import Client from './index'
 export const GetRecipeList = async () => {
   try {
     console.log('get recipes in recipe list service called')
-    const res = await Client.get('/recipes')
+    const res = await Client.get('/recipes/super')
     console.log(res)
     console.log(res.data)
     return res.data
