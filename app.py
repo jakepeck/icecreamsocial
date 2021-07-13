@@ -12,8 +12,9 @@ from flask_migrate import Migrate
 from models.db import db
 from models.user import User
 from models.comment import Comment
-from models import user, recipe, comment
-from resources import comment, user, recipe
+from models.review import Review
+from models import user, recipe, comment, review
+from resources import comment, user, recipe, review
 from resources.auth import Login, Register
 from resources.user import Users, SingleUser
 from resources.recipe import Recipes, RecipeDetail
@@ -50,5 +51,7 @@ api.add_resource(Comments, '/comments')
 api.add_resource(CommentDetail, '/comments/<int:comment_id>')
 api.add_resource(Reviews, '/reviews')
 api.add_resource(ReviewDetail, '/reviews/<int:review_id>')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

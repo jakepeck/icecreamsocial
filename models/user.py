@@ -51,6 +51,8 @@ class User(db.Model):
                               backref=db.backref('user', lazy=True))
     comments = db.relationship("Comment", cascade='all',
                                backref=db.backref('user', lazy=True))
+    reviews = db.relationship("Review", cascade='all',
+                              backref=db.backref('user', lazy=True))
 
     def __init__(self, username, email, password_digest):
         self.username = username
