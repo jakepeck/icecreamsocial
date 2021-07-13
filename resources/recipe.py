@@ -29,7 +29,7 @@ class RecipeDetail(Resource):
         recipe_poster = recipe2.user
         # return {**recipe.json(), **user.json()}
         # user = User.find_by_id(recipe.poster_id)
-        return {**recipe2.json(), "user": recipe_poster.json()}
+        return {**recipe2.json(), "recipe_poster": recipe_poster.json()}
 
         # alternate/original solution
         ## recipe = Recipe.find_by_id(recipe_id)
@@ -40,7 +40,7 @@ class RecipeDetail(Resource):
         data = request.get_json()
         recipe = Recipe.find_by_id(recipe_id)
         for k in data.keys():
-            recipe[k] = data[k]
+            setattr(recipe, k, data[k])
         db.session.commit()
         return recipe.json()
 

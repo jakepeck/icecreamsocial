@@ -10,7 +10,7 @@ from flask_migrate import Migrate
 # from models.db import db
 from models.db import db
 from models.user import User
-from models.recipe import Recipe
+from models import user, recipe
 from resources.auth import Login, Register
 from resources.user import Users, SingleUser
 from resources.recipe import Recipes, RecipeDetail

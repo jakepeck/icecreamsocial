@@ -8,7 +8,7 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     photo = db.Column(db.String(255), nullable=False)
     title = db.Column(db.String(255), nullable=False)
-    content = db.Column(db.String(255), nullable=False)
+    content = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow(
@@ -33,7 +33,7 @@ class Recipe(db.Model):
     @classmethod
     def find_all(cls):
         recipes = Recipe.query.all()
-        return [r.json() for r in recipes]
+        return [recipe.json() for recipe in recipes]
 
     @classmethod
     def find_by_id(cls, recipe_id):
