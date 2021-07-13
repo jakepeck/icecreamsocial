@@ -56,3 +56,15 @@ class CommentDetail(Resource):
         db.session.delete(comment)
         db.session.commit()
         return {"msg": "Comment deleted", "payload": comment_id}
+
+
+class CommentsByUser(Resource):
+    def get(self, user_id):
+        comments = Comment.find_all_by_user_id(user_id)
+        return comments, 200
+
+
+class CommentsOnRecipe(Resource):
+    def get(self, recipe_id):
+        comments = Comment.find_all_by_recipe_id(recipe_id)
+        return comments, 200

@@ -45,3 +45,10 @@ class Comment(db.Model):
         print('\n \n')
         print(comments)
         return [c.json() for c in comments]
+
+    @classmethod
+    def find_all_by_user_id(cls, user_id):
+        comments = Comment.query.filter_by(commenter_id=user_id)
+        print('\n \n')
+        print(comments)
+        return [c.json() for c in comments]
