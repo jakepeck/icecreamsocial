@@ -1,3 +1,4 @@
+from resources.review import ReviewDetail, Reviews
 from models.recipe import Recipe
 from flask import Flask
 from flask_restful import Api
@@ -47,6 +48,7 @@ api.add_resource(Recipes, '/recipes')
 api.add_resource(RecipeDetail, '/recipes/<int:recipe_id>')
 api.add_resource(Comments, '/comments')
 api.add_resource(CommentDetail, '/comments/<int:comment_id>')
-
+api.add_resource(Reviews, '/reviews')
+api.add_resource(ReviewDetail, '/reviews/<int:review_id>')
 if __name__ == '__main__':
     app.run(debug=True)
