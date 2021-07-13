@@ -4,6 +4,7 @@ import {
   LoadRecipeList,
   LoadSelectedRecipe
 } from '../store/actions/RecipeListActions'
+import {Card} from 'react-rainbow-components'
 
 
 const mapStateToProps = ({ recipeListState }) => {
@@ -22,9 +23,11 @@ const RecipeList = (props) => {
     props.fetchRecipeList()
   }, [props.recipeListState.selectedRecipe])
 
+  console.log(props)
+
   const recipesMap = props.recipeListState.recipes.map((recipe, idx) => {
     return (
-      <div key={recipe.id} className="card">
+      <Card key={idx} className="card">
         {recipe.title}{' '}
         <img
           src={`${recipe.photo}`}
@@ -38,7 +41,7 @@ const RecipeList = (props) => {
         >
           View Recipe Details
         </button>
-      </div>
+      </Card>
     )
   })
 
@@ -47,7 +50,7 @@ const RecipeList = (props) => {
       {props.recipeListState.selectedRecipe !== null ? (
         <div className="recipeDetails">
           <img
-            src={`${POSTER_PATH}${props.recipeListState.selectedRecipe.photo}`}
+            src={`${props.recipeListState.selectedRecipe.photo}`}
             alt="photo"
             width="200"
           />
