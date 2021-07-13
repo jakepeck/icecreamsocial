@@ -20,7 +20,7 @@ const Nav = (props) => {
           Recipes
         </NavLink>
         <NavLink className="nav-link" to="/users">
-          Ice Cream Socialites
+          Users
         </NavLink>
         <NavLink className="nav-link" to="/reviews">
           Reviews
