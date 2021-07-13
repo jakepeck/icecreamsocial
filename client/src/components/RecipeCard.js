@@ -7,6 +7,7 @@ import { Card, ButtonIcon, Button } from 'react-rainbow-components'
 //   faAngleDown
 // } from '@fortawesome/free-solid-svg-icons'
 // import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import RecipeCardComments from './RecipeCardComments'
 
 // const iconContainerStyles = {
 //   width: '2.5rem',
@@ -64,7 +65,7 @@ const RecipeCard = (props) => {
         >
           View Recipe Details
         </button>
-
+        <RecipeCardComments comments={props.recipe.comments}/>
         
       </Card>
     </div>

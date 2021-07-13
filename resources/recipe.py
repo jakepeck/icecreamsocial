@@ -59,7 +59,7 @@ class RecipeSuperDetail(Resource):
         # recipes = Recipe.query.options(joinedload(
         #     'user'))
         recipes = Recipe.query
-        return [{"recipe": recipe.json(), "recipe_poster": recipe.user.json(), "comments": [comment.json() for comment in recipe.comments]}for recipe in recipes]
+        return [{"recipe": recipe.json(), "recipe_poster": recipe.user.json(), "comments": [{"comment": comment.json(), "commenter_username": comment.user.username} for comment in recipe.comments]}for recipe in recipes]
 
     # def get(self, r_id):
 
