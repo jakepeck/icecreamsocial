@@ -47,11 +47,17 @@ const UserList = (props) => {
       {props.userListState.selectedUser !== null ? (
         <div className="userDetails">
           
-          <h1>{props.userListState.selectedUser.username}</h1>
+          <h1>{props.userListState.selectedUser.user.username}</h1>
           <div>
             <h2>
-              {props.userListState.selectedUser.created_at}
+              {props.userListState.selectedUser.user.created_at}
             </h2>
+            <h3>Recent Recipes from {props.userListState.selectedUser.user.username}</h3>
+            {props.userListState.selectedUser.user_recipes.length > 0 ? <div>{props.userListState.selectedUser.user_recipes.map((recipe,idx)=>( <div key={idx}> {recipe.title}</div>))}</div>: <h4>No recipes posted by this member yet</h4>}
+            
+            <h3>Recent Comments from {props.userListState.selectedUser.user.username}</h3>
+            {props.userListState.selectedUser.user_comments.length > 0 ? <div>{props.userListState.selectedUser.user_comments.map((comment,idx)=>( <div key={idx}> {comment.content}</div>))}</div>: <h4>No comments posted by this member yet</h4>}
+
            
           </div>
 

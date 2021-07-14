@@ -94,3 +94,15 @@ class SingleUser(Resource):
         # user.email = data['email']
         db.session.commit()
         return user.json()
+
+
+class UserSuperDetail(Resource):
+    def get(self, user_id):
+        user = User.find_by_id(user_id)
+        if not user:
+            return {"message": "Not Found"}, 404
+        user_comments = user.comments
+        user_recipes = user.recipes
+        print(user_comments, user_recipes)
+        print(user)
+        return {"user": user.json(), "user_comments": [uc.json() for uc in user_comments], "user_recipes": [ur.json() for ur in user_recipes]}

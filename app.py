@@ -16,9 +16,9 @@ from models.review import Review
 from models import user, recipe, comment, review
 from resources import comment, user, recipe, review
 from resources.auth import Login, Register
-from resources.user import Users, SingleUser
+from resources.user import Users, SingleUser, UserSuperDetail
 from resources.recipe import Recipes, RecipeDetail, RecipeSuperDetail, RecipesByUser
-from resources.comment import Comments, CommentDetail, CommentsByRecipe, CommentsByUser, CommentsOnRecipe
+from resources.comment import Comments, CommentDetail, CommentsOnRecipe, CommentsByUser, CommentsOnRecipe
 
 app = Flask(__name__)
 CORS(app)
@@ -45,6 +45,7 @@ api.add_resource(Login, '/auth/login')
 api.add_resource(Register, '/auth/register')
 api.add_resource(Users, '/users')
 api.add_resource(SingleUser, '/users/<int:id>')
+api.add_resource(UserSuperDetail, '/super/users/<int:user_id>')
 api.add_resource(RecipeSuperDetail, '/recipes/super')
 api.add_resource(Recipes, '/recipes')
 api.add_resource(RecipeDetail, '/recipes/<int:recipe_id>')
