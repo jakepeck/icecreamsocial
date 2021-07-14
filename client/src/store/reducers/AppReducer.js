@@ -1,5 +1,9 @@
 const initialState = {
-  appLoading: false
+  appLoading: false,
+  authenticated: false,
+  registerOpen: false,
+  createRecipeOpen: false,
+  newRecipe: {title:'',photo:'', content:''}
 }
 
 const AppReducer = (state = initialState, action) => {
