@@ -5,6 +5,7 @@ import {
   LoadSelectedUser
 } from '../store/actions/UserListActions'
 import {Card} from 'react-rainbow-components'
+import store from '../store'
 
 
 
@@ -25,6 +26,7 @@ const UserList = (props) => {
   }, [props.userListState.selectedUser])
 
   console.log(props)
+  console.log(store.getState())
 
   const usersMap = props.userListState.users.map((user, idx) => {
     return (
@@ -54,9 +56,9 @@ const UserList = (props) => {
             </h2>
             <h3>Recent Recipes from {props.userListState.selectedUser.user.username}</h3>
             {props.userListState.selectedUser.user_recipes.length > 0 ? <div>{props.userListState.selectedUser.user_recipes.map((recipe,idx)=>( <div key={idx}> {recipe.title}</div>))}</div>: <h4>No recipes posted by this member yet</h4>}
-            
+
             <h3>Recent Comments from {props.userListState.selectedUser.user.username}</h3>
-            {props.userListState.selectedUser.user_comments.length > 0 ? <div>{props.userListState.selectedUser.user_comments.map((comment,idx)=>( <div key={idx}> {comment.content}</div>))}</div>: <h4>No comments posted by this member yet</h4>}
+            {props.userListState.selectedUser.user_comments.length > 0 ? <div>{props.userListState.selectedUser.user_comments.map((comment,idx)=>( <div key={idx}>{comment.content}</div>))}</div>: <h4>No comments posted by this member yet</h4>}
 
            
           </div>
