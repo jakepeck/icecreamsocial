@@ -102,9 +102,8 @@ const Login = (props) => {
               onChange={handleChange}
               required
             />
-          
-        </Form>
-      
+
+
         <Button
           size="large"
           color="red"
@@ -123,6 +122,9 @@ const Login = (props) => {
         >
           LogIn
         </Button>
+          
+        </Form>
+      
       
     </Modal>
   )
