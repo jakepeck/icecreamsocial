@@ -1,22 +1,51 @@
 import { NavLink } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import store from '../store'
+import { SET_UNAUTHENTICATED } from '../store/types'
 
 const Nav = (props) => {
-  // const handleClickLogIn = (e) => {
-  //   e.preventDefault()
-  //   // props.toggleLoginOpen(true)
-  // }
+  console.log('nav props:', props)
+  let authenticated = store.getState().appState.authenticated
+  useEffect(() => {
+    console.log('nav use effect firing')
+    console.log(props)
+    console.log(store)
+    // authenticated = store.getState().appState.authenticated
+    console.log(authenticated)
+  }, [authenticated])
 
-  // const handleClickRegister = (e) => {
-  //   e.preventDefault()
-  //   // props.toggleRegisterOpen(true)
-  // }
+  const logOut = () => {
+    console.log(
+      'logOut function called, user auth status upon function entry was :'
+    )
+    console.log(store.getState().appState.authenticated)
+    store.dispatch({ type: SET_UNAUTHENTICATED })
+    console.log('user auth status after dispatching store')
+    console.log(store.getState().appState.authenticated)
+    localStorage.clear()
+  }
+
+  const handleClickLogIn = (e) => {
+    e.preventDefault()
+    console.log('handleClickLogIn function called')
+    // props.toggleLoginOpen(true)
+  }
+
+  const handleClickRegister = (e) => {
+    e.preventDefault()
+    console.log('handleClickRegister function called')
+    // props.toggleRegisterOpen(true)
+  }
+  // console.log('nav props:')
+  // console.log(props)
+  console.log(store.getState().appState.authenticated)
+  // let authenticated = store.getState().appState.authenticated
 
   return (
     <div className="nav-bar">
-      
-      <div className="nav-links"><NavLink className="nav-link" to="/recipes">
+      <div className="nav-links">
+        <NavLink className="nav-link" to="/recipes">
           Recipes
         </NavLink>
         <NavLink className="nav-link" to="/users/all">
@@ -36,30 +65,30 @@ const Nav = (props) => {
         </NavLink>
         <NavLink className="nav-link" to="/auth/login">
           Log In
-        </NavLink></div>
-       
-        
-        
-        <button
-          // onClick={
-          //   !props.authenticated
-          //     ? handleClickRegister
-          //     : () => props.history.push('/account')
-          // }
-          className="nav-btn"
-        >
-          {!props.authenticated ? 'Sign Up!' : 'My Account'}
-        </button>
-        <button
-          // onClick={!props.authenticated ? handleClickLogIn : props.logOut}
-          className="nav-btn"
-        >
-          {!props.authenticated ? 'Log In' : 'Log Out'}
-        </button>
+        </NavLink>
+      </div>
 
+      <button
+        onClick={
+          !store.getState().appState.authenticated
+            ? () => handleClickRegister
+            : () =>
+                props.history.push(
+                  `/users/${store.getState().appState.userCredentials.id}`
+                )
+        }
+        className="nav-btn"
+      >
+        {!store.getState().appState.authenticated ? 'Sign Up!' : 'My Account'}
+      </button>
+      <button
+        // onClick={!props.authenticated ? handleClickLogIn : props.logOut}
+        onClick={!store.getState().appState.authenticated ? () => {} : logOut}
+        className="nav-btn"
+      >
+        {!store.getState().appState.authenticated ? 'Log In' : 'Log Out'}
+      </button>
     </div>
-
-      
   )
 }
 

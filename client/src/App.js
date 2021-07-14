@@ -7,9 +7,12 @@ import Login from './components/LogIn'
 import Nav from './components/Nav'
 import { Route, Switch } from 'react-router-dom'
 import React from 'react'
+import store from './store'
 
 function App(props) {
+  console.log('app props')
   console.log(props)
+  console.log(store.getState())
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -24,11 +27,10 @@ function App(props) {
           {' '}
           <UserList />
         </Route>
-        {/* <Route path="/users/:user_id" > <UserDetail /></Route> */}
-        <Route exact path="/auth/register" component={Register}></Route>
-        <Route exact path="/auth/login">
-          <Login />
-        </Route>
+        <Route path="/users/:user_id" component={UserDetail} />
+
+        <Route exact path="/auth/register" component={Register} />
+        <Route exact path="/auth/login" component={Login} />
 
         <Route path="/">
           <RecipeList />

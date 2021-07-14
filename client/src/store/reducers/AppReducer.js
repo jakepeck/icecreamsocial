@@ -5,7 +5,8 @@ import {
   LOG_OUT,
   TOGGLE_APP_LOADING,
   TOGGLE_REGISTER_OPEN,
-  TOGGLE_REGISTER_CLOSED
+  TOGGLE_REGISTER_CLOSED,
+  SET_USER_CREDENTIALS
 } from '../types'
 
 const initialState = {
@@ -25,6 +26,8 @@ const AppReducer = (state = initialState, action) => {
       return { ...state, authenticated: true }
     case SET_UNAUTHENTICATED:
       return initialState
+    case SET_USER_CREDENTIALS:
+      return { ...state, userCredentials: action.payload }
     case TOGGLE_REGISTER_OPEN:
       return { ...state, registerOpen: true }
     case TOGGLE_REGISTER_CLOSED:

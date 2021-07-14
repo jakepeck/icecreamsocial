@@ -2,20 +2,36 @@ import React, { useState } from 'react'
 import { Button, Form, Icon, Modal } from 'react-rainbow-components'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
+import { SET_AUTHENTICATED, SET_USER_CREDENTIALS } from '../store/types'
+import store from '../store'
 const Login = (props) => {
+  console.log('Login componetnts props')
+  console.log(props)
   const [loginForm, handleLoginForm] = useState({
     email: '',
     password: ''
   })
 
+  // console.log(store.dispatch)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      console.log('log in handleSubmit called')
       const res = await axios.post(`${BASE_URL}/auth/login`, loginForm)
+      console.log(res.data)
       localStorage.setItem('token', res.data.token)
-      props.toggleAuthenticated(true)
-      props.toggleLogin(false)
+      console.log(store.getState().appState.authenticated)
+      store.dispatch({ type: SET_AUTHENTICATED })
+      console.log('after dispatch call')
+      console.log(store.getState().appState.authenticated)
+      console.log(store.getState().appState.userCredentials)
+      store.dispatch({ type: SET_USER_CREDENTIALS, payload: res.data.payload })
+      console.log(store.getState().appState.userCredentials)
+      store.getState()
+      // props.toggleLogin(false)
       handleLoginForm({ email: '', password: '' })
+      props.history.push(`/users/${res.data.payload.id}`)
     } catch (error) {
       console.log(error)
     }
@@ -106,7 +122,7 @@ const Login = (props) => {
         size="large"
         color="red"
         animated="fade"
-        onClick={() => props.toggleLogin(false)}
+        // onClick={() => props.toggleLogin(false)}
       >
         Close
       </button>

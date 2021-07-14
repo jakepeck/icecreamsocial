@@ -60,7 +60,8 @@ class Login(Resource):
         if user and compare_password(data['password'], user.password_digest):
             payload = {
                 "id": user.id,
-                "email": user.email
+                "email": user.email,
+                "username": user.username
             }
             token = create_token(payload)
             return {"payload": payload, "token": token}, 200

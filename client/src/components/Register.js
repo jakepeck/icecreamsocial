@@ -8,6 +8,7 @@ import { TOGGLE_REGISTER_CLOSED } from '../store/types'
 const Register = (props) => {
   console.log('Register component props:')
   console.log(props)
+
   const [registerForm, handleRegisterForm] = useState({
     email: '',
     password: '',
@@ -19,9 +20,14 @@ const Register = (props) => {
     try {
       const res = await Client.post(`${BASE_URL}/auth/register`, registerForm)
       // props.toggleRegister(false)
-      props.dispatch({ type: TOGGLE_REGISTER_CLOSED })
+      // props.dispatch({ type: TOGGLE_REGISTER_CLOSED })
+      console.log('Register handleSubmit called')
+      console.log(res)
+      console.log(res.data)
       handleRegisterForm({ email: '', password: '', username: '' })
+      console.log()
     } catch (error) {
+      console.log('register handleSubmit failed')
       console.log(error)
     }
   }
@@ -32,63 +38,6 @@ const Register = (props) => {
   }
 
   return (
-    // <Modal open={props.registerOpen}>
-
-    //     <Form onSubmit={handleSubmit}>
-
-    //         <label>Your Name</label>
-    //         <input
-    //           type="text"
-    //           name="username"
-    //           placeholder="JaneDoe"
-    //           value={registerForm.username}
-    //           onChange={handleChange}
-    //           required
-    //         />
-
-    //         <label>Email</label>
-    //         <input
-    //           type="email"
-    //           name="email"
-    //           placeholder="jane@mail.com"
-    //           value={registerForm.email}
-    //           onChange={handleChange}
-    //           required
-    //         />
-
-    //         <label>Password</label>
-    //         <input
-    //           type="password"
-    //           name="password"
-    //           placeholder="Your Password"
-    //           value={registerForm.password}
-    //           onChange={handleChange}
-    //           required
-    //         />
-
-    //     <Button
-    //       size="large"
-    //       color="red"
-    //       animated="fade"
-    //       onClick={() => props.toggleRegister(false)}
-    //     >
-    //       Close
-    //     </Button>
-    //     <Button
-    //       disabled={
-    //         !registerForm.email || !registerForm.password || !registerForm.username
-    //       }
-    //       size="large"
-    //       color="teal"
-    //       animated="fade"
-    //       onClick={handleSubmit}
-    //     >
-    //       Sign Up
-    //     </Button>
-
-    //     </Form>
-
-    // </Modal>
     <div>
       <h1>Register Component Test</h1>
       <form onSubmit={handleSubmit}>
