@@ -80,53 +80,48 @@ const Login = (props) => {
     //     </Button>
     //   </Modal.Actions>
     // </Modal>
-    <Modal open={props.loginOpen}>
-        <Form onSubmit={handleSubmit}>
-         
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="jane@mail.com"
-              value={loginForm.email}
-              onChange={handleChange}
-              required
-            />
-          
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Your Password"
-              value={loginForm.password}
-              onChange={handleChange}
-              required
-            />
+    // <Modal open={props.loginOpen}>
+    <form onSubmit={handleSubmit}>
+      <label>Email</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="jane@mail.com"
+        value={loginForm.email}
+        onChange={handleChange}
+        required
+      />
 
+      <label>Password</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="Your Password"
+        value={loginForm.password}
+        onChange={handleChange}
+        required
+      />
 
-        <Button
-          size="large"
-          color="red"
-          animated="fade"
-          onClick={() => props.toggleLogin(false)}
-        >
-          Close
-          
-        </Button>
-        <Button
-          disabled={!loginForm.email || !loginForm.password}
-          size="large"
-          color="teal"
-          animated="fade"
-          onClick={handleSubmit}
-        >
-          LogIn
-        </Button>
-          
-        </Form>
-      
-      
-    </Modal>
+      <button
+        size="large"
+        color="red"
+        animated="fade"
+        onClick={() => props.toggleLogin(false)}
+      >
+        Close
+      </button>
+      <button
+        disabled={!loginForm.email || !loginForm.password}
+        size="large"
+        color="teal"
+        animated="fade"
+        onClick={handleSubmit}
+      >
+        LogIn
+      </button>
+    </form>
+
+    // </Modal>
   )
 }
 

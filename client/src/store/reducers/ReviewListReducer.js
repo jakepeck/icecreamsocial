@@ -1,7 +1,8 @@
 const {
   REVIEW_LIST_LOADING_TYPE,
   GET_REVIEW_LIST,
-  SET_SELECTED_REVIEW
+  SET_SELECTED_REVIEW,
+  POST_REVIEW
 } = require('../types')
 
 const iState = {

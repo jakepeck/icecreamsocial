@@ -30,6 +30,12 @@ const Nav = (props) => {
         </NavLink>
         <NavLink className="nav-link" to="/createrecipe">
           Post
+        </NavLink>
+        <NavLink className="nav-link" to="/auth/register">
+          Sign Up
+        </NavLink>
+        <NavLink className="nav-link" to="/auth/login">
+          Log In
         </NavLink></div>
        
         

@@ -55,11 +55,17 @@ const CreateRecipe = (props) => {
     //     </Form>
     //   </Modal.Content>
     // </Modal>
-    <Modal open={props.modalOpen} centered={false}>
+
+
+
+
+    // <Modal open={props.modalOpen} centered={false}>
     
-      <Button icon color="red" onClick={props.closeModal}>
-        <Icon name="close" />
-      </Button>
+    //   <Button icon color="red" onClick={props.closeModal}>
+    //     <Icon name="close" />
+    //   </Button>
+
+    <div>
     <h1>Create A Post!</h1>
     
       <Form onSubmit={props.submitPost}>
@@ -100,9 +106,10 @@ const CreateRecipe = (props) => {
           Post It
         </Button>
       </Form>
-   
-  </Modal>
+  </div>
   )
+  {/* </Modal> */}
+  
 }
 
 export default CreateRecipe
