@@ -55,7 +55,7 @@ const CreateRecipe = (props) => {
         <input
           onChange={handleChange}
           type="text"
-          name="image"
+          name="photo"
           value={recipeFormData.photo}
           placeholder="Enter an image url"
         />
@@ -64,17 +64,17 @@ const CreateRecipe = (props) => {
         <textarea
           onChange={handleChange}
           type="text"
-          name="body"
+          name="content"
           value={recipeFormData.content}
           placeholder="Tell us about your recipe"
         />
 
         <button
-          onClick={props.submitPost}
+          onClick={submitRecipe}
           disabled={
             !recipeFormData.title ||
-            !recipeFormData.body ||
-            !recipeFormData.image
+            !recipeFormData.content ||
+            !recipeFormData.photo
           }
           color="blue"
           fluid
