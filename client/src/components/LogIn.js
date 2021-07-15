@@ -4,7 +4,13 @@ import axios from 'axios'
 import { BASE_URL } from '../globals'
 import { SET_AUTHENTICATED, SET_USER_CREDENTIALS } from '../store/types'
 import store from '../store'
-const Login = (props) => {
+import { connect } from 'react-redux'
+
+const mapStateToProps = ({ appState }) => {
+  return { appState }
+}
+
+const LogIn = (props) => {
   console.log('Login componetnts props')
   console.log(props)
   const [loginForm, handleLoginForm] = useState({
@@ -21,13 +27,13 @@ const Login = (props) => {
       const res = await axios.post(`${BASE_URL}/auth/login`, loginForm)
       console.log(res.data)
       localStorage.setItem('token', res.data.token)
-      console.log(store.getState().appState.authenticated)
+      console.log(props.appState.authenticated)
       store.dispatch({ type: SET_AUTHENTICATED })
       console.log('after dispatch call')
-      console.log(store.getState().appState.authenticated)
-      console.log(store.getState().appState.userCredentials)
+      // console.log(store.getState().appState.authenticated)
+      // console.log(store.getState().appState.userCredentials)
       store.dispatch({ type: SET_USER_CREDENTIALS, payload: res.data.payload })
-      console.log(store.getState().appState.userCredentials)
+      // console.log(store.getState().appState.userCredentials)
       store.getState()
       // props.toggleLogin(false)
       handleLoginForm({ email: '', password: '' })
@@ -43,60 +49,6 @@ const Login = (props) => {
   }
 
   return (
-    // <Modal open={props.loginOpen}>
-    //   <Modal.Content>
-    //     <Form onSubmit={handleSubmit}>
-    //       <Form.Field>
-    //         <label>Email</label>
-    //         <input
-    //           type="email"
-    //           name="email"
-    //           placeholder="jane@mail.com"
-    //           value={loginForm.email}
-    //           onChange={handleChange}
-    //           required
-    //         />
-    //       </Form.Field>
-    //       <Form.Field>
-    //         <label>Password</label>
-    //         <input
-    //           type="password"
-    //           name="password"
-    //           placeholder="Your Password"
-    //           value={loginForm.password}
-    //           onChange={handleChange}
-    //           required
-    //         />
-    //       </Form.Field>
-    //     </Form>
-    //   </Modal.Content>
-    //   <Modal.Actions>
-    //     <Button
-    //       size="large"
-    //       color="red"
-    //       animated="fade"
-    //       onClick={() => props.toggleLogin(false)}
-    //     >
-    //       <Button.Content visible>Close</Button.Content>
-    //       <Button.Content hidden>
-    //         <Icon name="close" />
-    //       </Button.Content>
-    //     </Button>
-    //     <Button
-    //       disabled={!loginForm.email || !loginForm.password}
-    //       size="large"
-    //       color="teal"
-    //       animated="fade"
-    //       onClick={handleSubmit}
-    //     >
-    //       <Button.Content visible>Login</Button.Content>
-    //       <Button.Content hidden>
-    //         <Icon name="lock" />
-    //       </Button.Content>
-    //     </Button>
-    //   </Modal.Actions>
-    // </Modal>
-    // <Modal open={props.loginOpen}>
     <form onSubmit={handleSubmit}>
       <label>Email</label>
       <input
@@ -141,4 +93,4 @@ const Login = (props) => {
   )
 }
 
-export default Login
+export default connect(mapStateToProps)(LogIn)

@@ -27,8 +27,8 @@ const RecipeListReducer = (state = iState, action) => {
         if (recipe.id === action.payload) {
           state.recipes.splice(idx, 1)
         }
-        return { ...state }
       })
+      return { ...state }
     default:
       return { ...state }
   }

@@ -3,35 +3,40 @@ import RecipeList from './components/RecipeList'
 import UserList from './components/UserList'
 import UserDetail from './components/UserDetail'
 import Register from './components/Register'
-import Login from './components/LogIn'
+import LogIn from './components/LogIn'
 import Nav from './components/Nav'
+import CreateRecipe from './components/CreateRecipe'
 import { Route, Switch } from 'react-router-dom'
 import React from 'react'
 import store from './store'
+import { SET_AUTHENTICATED } from './store/types'
+import { useEffect } from 'react'
 
 function App(props) {
   console.log('app props')
   console.log(props)
-  console.log(store.getState())
+
+  // const getToken = () => {
+  //   let token = localStorage.getItem('token')
+  //   if (token) {
+  //     store.dispatch({ type: SET_AUTHENTICATED })
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getToken()
+  // }, [])
+
   return (
     <div className="App">
-      {/* <header className="App-header">
-      <h1>Successful Opening!</h1>
-      </header> */}
-      {/* <header><Nav/></header>
-      
-      <RecipeList /> */}
-
       <Switch>
-        <Route exact path="/users/all">
-          {' '}
-          <UserList />
-        </Route>
+        <Route exact path="/users/all" component={UserList} />
+
         <Route path="/users/:user_id" component={UserDetail} />
 
         <Route exact path="/auth/register" component={Register} />
-        <Route exact path="/auth/login" component={Login} />
-
+        <Route exact path="/auth/login" component={LogIn} />
+        <Route exact path="/createrecipe" component={CreateRecipe} />
         <Route path="/">
           <RecipeList />
         </Route>
