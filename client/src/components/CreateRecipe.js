@@ -1,13 +1,41 @@
 import { Button, Form, Icon, Modal } from 'react-rainbow-components'
 import { connect } from 'react-redux'
+import Client from '../services'
+import { useState } from 'react'
+import { BASE_URL } from '../globals'
 
 const mapStateToProps = ({ appState }) => {
   return { appState }
 }
 
 const CreateRecipe = (props) => {
-  let handleChange = props.handleChange
-  let newPost = props.newPost
+  const poster = props.appState.userCredentials.id
+
+  const [recipeFormData, setRecipeFormData] = useState({
+    title: '',
+    photo: '',
+    content: ''
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setRecipeFormData({ ...recipeFormData, [name]: value })
+  }
+
+  const submitRecipe = async (e) => {
+    e.preventDefault()
+    try {
+      console.log(recipeFormData)
+      const recipe = { poster_id: poster, ...recipeFormData }
+      console.log(recipe)
+      const res = await Client.post(`${BASE_URL}/recipes`, recipe)
+      // setPosts([...posts, res.data])
+      // setNewPost({ title: '', photo: '', content: '' })
+      // toggleCreatePostOpen(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div>
@@ -19,7 +47,7 @@ const CreateRecipe = (props) => {
           onChange={handleChange}
           type="text"
           name="title"
-          value={newPost.title}
+          value={recipeFormData.title}
           placeholder="Enter a title"
         />
 
@@ -28,7 +56,7 @@ const CreateRecipe = (props) => {
           onChange={handleChange}
           type="text"
           name="image"
-          value={newPost.image}
+          value={recipeFormData.photo}
           placeholder="Enter an image url"
         />
 
@@ -37,17 +65,21 @@ const CreateRecipe = (props) => {
           onChange={handleChange}
           type="text"
           name="body"
-          value={newPost.body}
-          placeholder="Tell us about your post."
+          value={recipeFormData.content}
+          placeholder="Tell us about your recipe"
         />
 
         <button
           onClick={props.submitPost}
-          disabled={!newPost.title || !newPost.body || !newPost.image}
+          disabled={
+            !recipeFormData.title ||
+            !recipeFormData.body ||
+            !recipeFormData.image
+          }
           color="blue"
           fluid
         >
-          Post It
+          Post Your Recipe
         </button>
       </form>
     </div>

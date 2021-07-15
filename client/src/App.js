@@ -16,16 +16,16 @@ function App(props) {
   console.log('app props')
   console.log(props)
 
-  // const getToken = () => {
-  //   let token = localStorage.getItem('token')
-  //   if (token) {
-  //     store.dispatch({ type: SET_AUTHENTICATED })
-  //   }
-  // }
+  const getToken = () => {
+    let token = localStorage.getItem('token')
+    if (token) {
+      store.dispatch({ type: SET_AUTHENTICATED })
+    }
+  }
 
-  // useEffect(() => {
-  //   getToken()
-  // }, [])
+  useEffect(() => {
+    getToken()
+  }, [])
 
   return (
     <div className="App">
