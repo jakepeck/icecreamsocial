@@ -81,3 +81,11 @@ class RecipesByUser(Resource):
     def get(self, user_id):
         recipes = Recipe.find_all_by_user_id(user_id)
         return recipes, 200
+
+
+class SingleRecipeSuperDetail(Resource):
+    def get(self, recipe_id):
+        # recipes = Recipe.query.options(joinedload(
+        #     'user'))
+        recipe = Recipe.find_by_id(recipe_id)
+        return [{"recipe": recipe.json(), "recipe_poster": recipe.user.json(), "comments": [{"comment": comment.json(), "commenter_username": comment.user.username} for comment in recipe.comments]}for recipe in recipes]

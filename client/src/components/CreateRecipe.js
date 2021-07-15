@@ -29,6 +29,7 @@ const CreateRecipe = (props) => {
       const recipe = { poster_id: poster, ...recipeFormData }
       console.log(recipe)
       const res = await Client.post(`${BASE_URL}/recipes`, recipe)
+      props.history.push('/recipes')
       // setPosts([...posts, res.data])
       // setNewPost({ title: '', photo: '', content: '' })
       // toggleCreatePostOpen(false)

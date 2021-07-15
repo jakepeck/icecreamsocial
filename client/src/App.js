@@ -11,6 +11,7 @@ import React from 'react'
 import store from './store'
 import { SET_AUTHENTICATED } from './store/types'
 import { useEffect } from 'react'
+import RecipeDetail from './components/RecipeDetail'
 
 function App(props) {
   console.log('app props')
@@ -37,9 +38,8 @@ function App(props) {
         <Route exact path="/auth/register" component={Register} />
         <Route exact path="/auth/login" component={LogIn} />
         <Route exact path="/createrecipe" component={CreateRecipe} />
-        <Route path="/">
-          <RecipeList />
-        </Route>
+        <Route exact path="/recipes" component={RecipeList} />
+        <Route exact path="/recipes/:recipe_id" component={RecipeDetail} />
       </Switch>
 
       <footer>

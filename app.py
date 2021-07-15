@@ -17,7 +17,7 @@ from models import user, recipe, comment, review
 from resources import comment, user, recipe, review
 from resources.auth import Login, Register
 from resources.user import Users, SingleUser, UserSuperDetail
-from resources.recipe import Recipes, RecipeDetail, RecipeSuperDetail, RecipesByUser
+from resources.recipe import Recipes, RecipeDetail, RecipeSuperDetail, RecipesByUser, SingleRecipeSuperDetail
 from resources.comment import Comments, CommentDetail, CommentsOnRecipe, CommentsByUser, CommentsOnRecipe
 
 app = Flask(__name__)
@@ -49,6 +49,7 @@ api.add_resource(UserSuperDetail, '/super/users/<int:user_id>')
 api.add_resource(RecipeSuperDetail, '/recipes/super')
 api.add_resource(Recipes, '/recipes')
 api.add_resource(RecipeDetail, '/recipes/<int:recipe_id>')
+api.add_resource(SingleRecipeSuperDetail, '/recipes/super/<int:recipe_id>')
 api.add_resource(RecipesByUser, '/recipes/users/<int:user_id>')
 api.add_resource(CommentsByUser, '/comments/users/<int:user_id>')
 api.add_resource(CommentsOnRecipe, '/comments/recipes/<int:recipe_id>')
