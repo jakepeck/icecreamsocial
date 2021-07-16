@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Form, Icon, Modal } from 'react-rainbow-components'
 import Client from '../services'
 import { BASE_URL } from '../globals'
-
-import { TOGGLE_REGISTER_CLOSED } from '../store/types'
 
 const Register = (props) => {
   console.log('Register component props:')
@@ -19,13 +16,7 @@ const Register = (props) => {
     e.preventDefault()
     try {
       const res = await Client.post(`${BASE_URL}/auth/register`, registerForm)
-      // props.toggleRegister(false)
-      // props.dispatch({ type: TOGGLE_REGISTER_CLOSED })
-      console.log('Register handleSubmit called')
-      console.log(res)
-      console.log(res.data)
       handleRegisterForm({ email: '', password: '', username: '' })
-      console.log()
     } catch (error) {
       console.log('register handleSubmit failed')
       console.log(error)

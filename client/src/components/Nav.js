@@ -41,12 +41,12 @@ const Nav = (props) => {
         <NavLink className="nav-link" to="/users/all">
           Users
         </NavLink>
-        <NavLink className="nav-link" to="/reviews">
+        {/* <NavLink className="nav-link" to="/reviews">
           Reviews
         </NavLink>
         <NavLink className="nav-link" to="/comments">
           Comments
-        </NavLink>
+        </NavLink> */}
         <NavLink className="nav-link" to="/createrecipe">
           Post
         </NavLink>

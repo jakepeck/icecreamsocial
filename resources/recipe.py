@@ -88,4 +88,6 @@ class SingleRecipeSuperDetail(Resource):
         # recipes = Recipe.query.options(joinedload(
         #     'user'))
         recipe = Recipe.find_by_id(recipe_id)
-        return [{"recipe": recipe.json(), "recipe_poster": recipe.user.json(), "comments": [{"comment": comment.json(), "commenter_username": comment.user.username} for comment in recipe.comments]}for recipe in recipes]
+        return {"recipe": recipe.json(), "recipe_poster": recipe.user.json(), "comments": [{"comment": comment.json(), "commenter_username": comment.user.username} for comment in recipe.comments]}
+
+        # return [{"recipe": recipe.json(), "recipe_poster": recipe.user.json(), "comments": [{"comment": comment.json(), "commenter_username": comment.user.username} for comment in recipe.comments]}for recipe in recipes]

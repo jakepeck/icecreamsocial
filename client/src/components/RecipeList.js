@@ -4,9 +4,8 @@ import {
   LoadRecipeList,
   LoadSelectedRecipe
 } from '../store/actions/RecipeListActions'
-import {Card} from 'react-rainbow-components'
+import { Card } from 'react-rainbow-components'
 import RecipeCard from './RecipeCard'
-
 
 const mapStateToProps = ({ recipeListState }) => {
   return { recipeListState }
@@ -28,28 +27,12 @@ const RecipeList = (props) => {
 
   const recipesMap = props.recipeListState.recipes.map((recipe, idx) => {
     return (
-      // <Card key={idx} className="card">
-      //   <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
-      //   <img
-      //     src={`${recipe.recipe.photo}`}
-      //     alt="picture of dessert"
-      //     // width="200"
-      //   />
-      //     <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
-      //     {recipe.recipe.title}{' '}
-      //     </h1>
-      //   </div>
-        
-        
-      //   <button
-      //     onClick={() => {
-      //       props.fetchRecipeDetails(recipe.recipe.id)
-      //     }}
-      //   >
-      //     View Recipe Details
-      //   </button>
-      // </Card>
-      <RecipeCard key={idx} recipe={recipe} fetchRecipeDetails={props.fetchRecipeDetails}/>
+      <RecipeCard
+        key={idx}
+        recipe={recipe}
+        fetchRecipeDetails={props.fetchRecipeDetails}
+        history={props.history}
+      />
     )
   })
 
@@ -64,13 +47,8 @@ const RecipeList = (props) => {
           />
           <h1>{props.recipeListState.selectedRecipe.title}</h1>
           <div>
-            <h2>
-              {props.recipeListState.selectedRecipe.content}
-            </h2>
-           
+            <h2>{props.recipeListState.selectedRecipe.content}</h2>
           </div>
-
-      
         </div>
       ) : (
         'Click on a recipe to expand details'

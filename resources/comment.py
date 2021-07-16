@@ -14,6 +14,7 @@ class Comments(Resource):
 
     def post(self):
         data = request.get_json()
+        print(data)
         params = {}
         for k in data.keys():
             params[k] = data[k]

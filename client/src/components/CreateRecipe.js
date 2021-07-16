@@ -31,7 +31,7 @@ const CreateRecipe = (props) => {
       const res = await Client.post(`${BASE_URL}/recipes`, recipe)
       props.history.push('/recipes')
       // setPosts([...posts, res.data])
-      // setNewPost({ title: '', photo: '', content: '' })
+      // setRecipeFormData({ title: '', photo: '', content: '' })
       // toggleCreatePostOpen(false)
     } catch (error) {
       console.log(error)
@@ -85,9 +85,6 @@ const CreateRecipe = (props) => {
       </form>
     </div>
   )
-  {
-    /* </Modal> */
-  }
 }
 
 export default connect(mapStateToProps)(CreateRecipe)

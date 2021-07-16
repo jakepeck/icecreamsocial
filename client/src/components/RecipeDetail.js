@@ -8,6 +8,7 @@ import { Card, ButtonIcon, Button } from 'react-rainbow-components'
 // } from '@fortawesome/free-solid-svg-icons'
 // import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import RecipeCardComments from './RecipeCardComments'
+import CommentForm from './CommentForm'
 import {
   LoadRecipeList,
   LoadSelectedRecipe
@@ -18,8 +19,8 @@ import { connect } from 'react-redux'
 //   width: '2.5rem',
 //   height: '2.5rem'
 // }
-const mapStateToProps = ({ recipeListState }) => {
-  return { recipeListState }
+const mapStateToProps = ({ recipeListState, appState }) => {
+  return { recipeListState, appState }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -29,11 +30,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 const RecipeDetail = (props) => {
-  console.log(props)
-
   useEffect(() => {
-    console.log(props)
-    console.log(props.recipeListState)
     props.fetchRecipeDetails(props.match.params.recipe_id)
   }, [props.match.params.recipe_id])
 
@@ -45,24 +42,36 @@ const RecipeDetail = (props) => {
             icon={
               <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
             }
-            title={props.recipeListState.selectedRecipe.title}
+            title={props.recipeListState.selectedRecipe.recipe_poster.username}
             actions={<Button variant="neutral" label="Add" />}
           >
             <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
+              {props.appState.authenticated &&
+              props.appState.userCredentials.id ===
+                props.recipeListState.selectedRecipe.recipe_poster.id ? (
+                <button>Delete Recipe</button>
+              ) : (
+                <div></div>
+              )}
               <img
-                src={`${props.recipeListState.selectedRecipe.photo}`}
+                src={`${props.recipeListState.selectedRecipe.recipe.photo}`}
                 alt="picture of dessert"
               />
               <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
-                {props.recipeListState.selectedRecipe.title}{' '}
+                {props.recipeListState.selectedRecipe.recipe.title}{' '}
               </h1>
               <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
                 {props.recipeListState.selectedRecipe.recipe_poster.username}{' '}
               </h1>
-              <p>{props.recipeListState.selectedRecipe.content}</p>
+              <p>{props.recipeListState.selectedRecipe.recipe.content}</p>
             </div>
 
-            {/* <RecipeCardComments comments={props.recipe.comments} /> */}
+            <RecipeCardComments
+              comments={props.recipeListState.selectedRecipe.comments}
+            />
+            <CommentForm
+              recipe_id={props.recipeListState.selectedRecipe.recipe.id}
+            />
           </Card>
         </div>
       ) : (
