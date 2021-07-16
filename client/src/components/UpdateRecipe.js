@@ -24,16 +24,18 @@ const UpdateRecipe = (props) => {
   console.log('update recipes props:')
   console.log(props)
   const poster = props.appState.userCredentials.id
-  useEffect(() => {
-    props.fetchRecipeDetails(props.match.params.recipe_id)
-  }, [props.match.params.recipe_id])
+  // useEffect(() => {
+  //   props.fetchRecipeDetails(props.match.params.recipe_id)
+  // }, [props.match.params.recipe_id])
+  console.log(props.match.params)
+  console.log(props.recipeListState.selectedRecipe)
 
   const [recipeFormData, setRecipeFormData] = useState({
     title: props.recipeListState.selectedRecipe.recipe.title || '',
     photo: props.recipeListState.selectedRecipe.recipe.photo || '',
     content: props.recipeListState.selectedRecipe.recipe.content || ''
   })
-
+  console.log(recipeFormData)
   const handleChange = (e) => {
     const { name, value } = e.target
     setRecipeFormData({ ...recipeFormData, [name]: value })
@@ -49,9 +51,7 @@ const UpdateRecipe = (props) => {
         `${BASE_URL}/recipes/${props.recipeListState.selectedRecipe.recipe.id}`,
         recipe
       )
-      props.history.push(
-        `/recipes/${props.recipeListState.selectedRecipe.recipe.id}`
-      )
+      props.history.push(`/recipes`)
       // setPosts([...posts, res.data])
       // setRecipeFormData({ title: '', photo: '', content: '' })
       // toggleCreatePostOpen(false)

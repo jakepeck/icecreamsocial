@@ -4,7 +4,8 @@ import CommentForm from './CommentForm'
 import RecipeCardComments from './RecipeCardComments'
 import {
   LoadRecipeList,
-  LoadSelectedRecipe
+  LoadSelectedRecipe,
+  LoadSelectedRecipeForUpdate
 } from '../store/actions/RecipeListActions'
 import { connect } from 'react-redux'
 import axios from 'axios'
@@ -22,7 +23,9 @@ const mapStateToProps = ({
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchRecipeList: () => dispatch(LoadRecipeList()),
-    fetchRecipeDetails: (recipeId) => dispatch(LoadSelectedRecipe(recipeId))
+    fetchRecipeDetails: (recipeId) => dispatch(LoadSelectedRecipe(recipeId)),
+    fetchRecipeDetailsForUpdate: (recipe) =>
+      dispatch(LoadSelectedRecipeForUpdate(recipe))
   }
 }
 
@@ -57,7 +60,7 @@ const RecipeCard = (props) => {
             <button
               onClick={() => {
                 // console.log(props.recipeListState.selectedRecipe)
-                props.fetchRecipeDetails(props.recipe.recipe.id)
+                // props.fetchRecipeDetails(props.recipe.recipe.id)
                 deleteHelper(props.recipe.recipe.id)
               }}
             >
@@ -65,7 +68,9 @@ const RecipeCard = (props) => {
             </button>{' '}
             <button
               onClick={() => {
-                props.fetchRecipeDetails(props.recipe.recipe.id)
+                console.log(props.recipeListState.selectedRecipe)
+                props.fetchRecipeDetailsForUpdate(props.recipe)
+                console.log(props.recipeListState.selectedRecipe)
                 props.history.push(`/updaterecipe/${props.recipe.recipe.id}`)
               }}
             >
