@@ -15,6 +15,7 @@ import RecipeDetail from './components/RecipeDetail'
 import Client from './services'
 import { BASE_URL } from './globals'
 import axios from 'axios'
+import UpdateRecipe from './components/UpdateRecipe'
 
 function App(props) {
   // console.log('app props')
@@ -49,6 +50,7 @@ function App(props) {
 
         <Route exact path="/auth/register" component={Register} />
         <Route exact path="/auth/login" component={LogIn} />
+        <Route exact path="/updaterecipe/:recipe_id" component={UpdateRecipe} />
         <Route exact path="/createrecipe" component={CreateRecipe} />
         <Route exact path="/recipes" component={RecipeList} />
         <Route exact path="/recipes/:recipe_id" component={RecipeDetail} />

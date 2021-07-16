@@ -36,6 +36,13 @@ const RecipeDetail = (props) => {
 
   return (
     <div>
+      <button
+        onClick={() => {
+          props.history.goBack()
+        }}
+      >
+        Back
+      </button>
       {props.recipeListState.selectedRecipe !== null ? (
         <div className="rainbow-m-around_large">
           <Card
@@ -49,7 +56,10 @@ const RecipeDetail = (props) => {
               {props.appState.authenticated &&
               props.appState.userCredentials.id ===
                 props.recipeListState.selectedRecipe.recipe_poster.id ? (
-                <button>Delete Recipe</button>
+                <div>
+                  {' '}
+                  <button>Delete Recipe</button> <button>Update Recipe</button>
+                </div>
               ) : (
                 <div></div>
               )}

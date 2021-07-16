@@ -4,9 +4,20 @@ import { Route, Switch } from 'react-router-dom'
 import store from '../store'
 import { SET_UNAUTHENTICATED } from '../store/types'
 import { connect } from 'react-redux'
+import {
+  LoadUserList,
+  LoadSelectedUser
+} from '../store/actions/UserListActions'
 
-const mapStateToProps = ({ appState }) => {
-  return { appState }
+const mapStateToProps = ({ appState, userListState }) => {
+  return { appState, userListState }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUserList: () => dispatch(LoadUserList()),
+    fetchUserDetails: (userId) => dispatch(LoadSelectedUser(userId))
+  }
 }
 
 const Nav = (props) => {
@@ -29,6 +40,7 @@ const Nav = (props) => {
 
   const handleClickMyAccount = (e) => {
     e.preventDefault()
+    props.fetchUserDetails(props.appState.userCredentials.id)
     history.push(`/users/${props.appState.userCredentials.id}`)
   }
 
@@ -73,4 +85,4 @@ const Nav = (props) => {
   )
 }
 
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

@@ -7,6 +7,8 @@ import {
   LoadSelectedRecipe
 } from '../store/actions/RecipeListActions'
 import { connect } from 'react-redux'
+import axios from 'axios'
+import { BASE_URL } from '../globals'
 
 const mapStateToProps = ({
   recipeListState,
@@ -32,6 +34,13 @@ const RecipeCard = (props) => {
     props.history.push(`/recipes/${recipe_id}`)
   }
 
+  const deleteHelper = async (recipe_id) => {
+    console.log('delete recipes helpers called')
+    console.log(recipe_id)
+    const res = await axios.delete(`${BASE_URL}/recipes/${recipe_id}`)
+    console.log(res)
+  }
+
   return (
     <div className="rainbow-m-around_large">
       <Card
@@ -44,7 +53,25 @@ const RecipeCard = (props) => {
       >
         {props.appState.authenticated &&
         props.appState.userCredentials.id === props.recipe.recipe_poster.id ? (
-          <button>Delete Recipe</button>
+          <div>
+            <button
+              onClick={() => {
+                // console.log(props.recipeListState.selectedRecipe)
+                props.fetchRecipeDetails(props.recipe.recipe.id)
+                deleteHelper(props.recipe.recipe.id)
+              }}
+            >
+              Delete Recipe
+            </button>{' '}
+            <button
+              onClick={() => {
+                props.fetchRecipeDetails(props.recipe.recipe.id)
+                props.history.push(`/updaterecipe/${props.recipe.recipe.id}`)
+              }}
+            >
+              Update Recipe
+            </button>
+          </div>
         ) : (
           <div></div>
         )}

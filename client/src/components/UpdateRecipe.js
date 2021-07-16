@@ -3,18 +3,35 @@ import { connect } from 'react-redux'
 import Client from '../services'
 import { useState } from 'react'
 import { BASE_URL } from '../globals'
+import axios from 'axios'
+import {
+  LoadRecipeList,
+  LoadSelectedRecipe
+} from '../store/actions/RecipeListActions'
+import React, { useEffect } from 'react'
 
-const mapStateToProps = ({ appState }) => {
-  return { appState }
+const mapStateToProps = ({ appState, recipeListState }) => {
+  return { appState, recipeListState }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchRecipeList: () => dispatch(LoadRecipeList()),
+    fetchRecipeDetails: (recipeId) => dispatch(LoadSelectedRecipe(recipeId))
+  }
 }
 
-const CreateRecipe = (props) => {
+const UpdateRecipe = (props) => {
+  console.log('update recipes props:')
+  console.log(props)
   const poster = props.appState.userCredentials.id
+  useEffect(() => {
+    props.fetchRecipeDetails(props.match.params.recipe_id)
+  }, [props.match.params.recipe_id])
 
   const [recipeFormData, setRecipeFormData] = useState({
-    title: '',
-    photo: '',
-    content: ''
+    title: props.recipeListState.selectedRecipe.recipe.title || '',
+    photo: props.recipeListState.selectedRecipe.recipe.photo || '',
+    content: props.recipeListState.selectedRecipe.recipe.content || ''
   })
 
   const handleChange = (e) => {
@@ -22,14 +39,19 @@ const CreateRecipe = (props) => {
     setRecipeFormData({ ...recipeFormData, [name]: value })
   }
 
-  const submitRecipe = async (e) => {
+  const submitRecipeUpdate = async (e) => {
     e.preventDefault()
     try {
       console.log(recipeFormData)
       const recipe = { poster_id: poster, ...recipeFormData }
       console.log(recipe)
-      const res = await Client.post(`${BASE_URL}/recipes`, recipe)
-      props.history.push('/recipes')
+      const res = await axios.put(
+        `${BASE_URL}/recipes/${props.recipeListState.selectedRecipe.recipe.id}`,
+        recipe
+      )
+      props.history.push(
+        `/recipes/${props.recipeListState.selectedRecipe.recipe.id}`
+      )
       // setPosts([...posts, res.data])
       // setRecipeFormData({ title: '', photo: '', content: '' })
       // toggleCreatePostOpen(false)
@@ -40,16 +62,16 @@ const CreateRecipe = (props) => {
 
   return (
     <div>
-      <h1>Create A Post!</h1>
+      <h1>Update your recipe!</h1>
 
-      <form onSubmit={submitRecipe}>
+      <form onSubmit={submitRecipeUpdate}>
         <label>Title</label>
         <input
           onChange={handleChange}
           type="text"
           name="title"
           value={recipeFormData.title}
-          placeholder="Enter a title"
+          placeholder={props.recipeListState.selectedRecipe.recipe.title}
         />
 
         <label>Image URL</label>
@@ -58,7 +80,7 @@ const CreateRecipe = (props) => {
           type="text"
           name="photo"
           value={recipeFormData.photo}
-          placeholder="Enter an image url"
+          placeholder={props.recipeListState.selectedRecipe.recipe.photo}
         />
 
         <label>Body</label>
@@ -67,11 +89,11 @@ const CreateRecipe = (props) => {
           type="text"
           name="content"
           value={recipeFormData.content}
-          placeholder="Tell us about your recipe"
+          placeholder={props.recipeListState.selectedRecipe.recipe.content}
         />
 
         <button
-          onClick={submitRecipe}
+          onClick={submitRecipeUpdate}
           disabled={
             !recipeFormData.title ||
             !recipeFormData.content ||
@@ -80,11 +102,11 @@ const CreateRecipe = (props) => {
           color="blue"
           fluid
         >
-          Post Your Recipe
+          Update Your Recipe
         </button>
       </form>
     </div>
   )
 }
 
-export default connect(mapStateToProps)(CreateRecipe)
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateRecipe)

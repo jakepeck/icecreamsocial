@@ -38,6 +38,7 @@ const UserList = (props) => {
         <button
           onClick={() => {
             props.fetchUserDetails(user.id)
+            props.history.push(`/users/${user.id}`)
           }}
         >
           View User Details
