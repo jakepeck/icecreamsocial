@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, ButtonIcon } from 'react-rainbow-components'
+import { Card, Button, ButtonIcon, ButtonGroup } from 'react-rainbow-components'
 import CommentForm from './CommentForm'
 import RecipeCardComments from './RecipeCardComments'
 import {
@@ -159,7 +159,7 @@ const RecipeCard = (props) => {
             title={props.recipe.recipe_poster.username}
             // actions={<Button variant="neutral" label="Add" />}
             actions={
-              ((
+              <ButtonGroup>
                 <Button
                   variant="neutral"
                   label="View Details"
@@ -167,8 +167,7 @@ const RecipeCard = (props) => {
                     pushToRecipeDetailPage(props.recipe.recipe.id)
                   }}
                 />
-              ),
-              (
+
                 <ButtonIcon
                   variant="border-filled"
                   size="medium"
@@ -180,8 +179,7 @@ const RecipeCard = (props) => {
                     deleteHelper(props.recipe.recipe.id)
                   }}
                 />
-              ),
-              (
+
                 <ButtonIcon
                   variant="border-filled"
                   size="medium"
@@ -196,7 +194,7 @@ const RecipeCard = (props) => {
                     )
                   }}
                 />
-              ))
+              </ButtonGroup>
             }
           >
             <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
@@ -240,6 +238,7 @@ const RecipeCard = (props) => {
                 {props.recipe.recipe.title}{' '}
               </h1>
             </div>
+            <RecipeCardComments comments={props.recipe.comments} />
           </Card>
         </div>
       )}
