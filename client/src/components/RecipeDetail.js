@@ -7,6 +7,15 @@ import { Card, ButtonIcon, Button } from 'react-rainbow-components'
 //   faAngleDown
 // } from '@fortawesome/free-solid-svg-icons'
 // import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { ButtonIcon } from 'react-rainbow-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-regular-svg-icons'
+import {
+  faTrashAlt,
+  faPencilAlt,
+  faLocationArrow,
+  faArrowDown
+} from '@fortawesome/free-solid-svg-icons'
 import RecipeCardComments from './RecipeCardComments'
 import CommentForm from './CommentForm'
 import {
@@ -72,6 +81,22 @@ const RecipeDetail = (props) => {
             <CommentForm
               recipe_id={props.recipeListState.selectedRecipe.recipe.id}
             />
+            <div className="rainbow-p-right_large">
+              <ButtonIcon
+                variant="border-filled"
+                size="medium"
+                tooltip="Edit"
+                icon={<FontAwesomeIcon icon={faPencilAlt} />}
+              />
+            </div>
+            <div className="rainbow-p-right_large">
+              <ButtonIcon
+                variant="border-filled"
+                size="medium"
+                tooltip="Delete"
+                icon={<FontAwesomeIcon icon={faTrashAlt} />}
+              />
+            </div>
 
             {props.appState.authenticated &&
             props.appState.userCredentials.id ===
