@@ -51,10 +51,18 @@ const RecipeCard = (props) => {
           <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
         }
         title={props.recipe.recipe_poster.username}
-
         // actions={<Button variant="neutral" label="Add" />}
+        actions={
+          <Button
+            variant="neutral"
+            label="View Details"
+            onClick={() => {
+              pushToRecipeDetailPage(props.recipe.recipe.id)
+            }}
+          />
+        }
       >
-        {props.appState.authenticated &&
+        {/* {props.appState.authenticated &&
         props.appState.userCredentials.id === props.recipe.recipe_poster.id ? (
           <div>
             <button
@@ -79,7 +87,7 @@ const RecipeCard = (props) => {
           </div>
         ) : (
           <div></div>
-        )}
+        )} */}
         <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
           <img
             src={`${props.recipe.recipe.photo}`}

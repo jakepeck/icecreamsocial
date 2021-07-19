@@ -50,19 +50,9 @@ const RecipeDetail = (props) => {
               <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
             }
             title={props.recipeListState.selectedRecipe.recipe_poster.username}
-            actions={<Button variant="neutral" label="Add" />}
+            // actions={<Button variant="neutral" label="Add" />}
           >
             <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
-              {props.appState.authenticated &&
-              props.appState.userCredentials.id ===
-                props.recipeListState.selectedRecipe.recipe_poster.id ? (
-                <div>
-                  {' '}
-                  <button>Delete Recipe</button> <button>Update Recipe</button>
-                </div>
-              ) : (
-                <div></div>
-              )}
               <img
                 src={`${props.recipeListState.selectedRecipe.recipe.photo}`}
                 alt="picture of dessert"
@@ -82,6 +72,17 @@ const RecipeDetail = (props) => {
             <CommentForm
               recipe_id={props.recipeListState.selectedRecipe.recipe.id}
             />
+
+            {props.appState.authenticated &&
+            props.appState.userCredentials.id ===
+              props.recipeListState.selectedRecipe.recipe_poster.id ? (
+              <div>
+                {' '}
+                <button>Delete Recipe</button> <button>Update Recipe</button>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </Card>
         </div>
       ) : (
