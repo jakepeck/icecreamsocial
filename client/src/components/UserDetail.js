@@ -5,6 +5,7 @@ import {
 } from '../store/actions/UserListActions'
 import React, { useEffect } from 'react'
 import { Card } from 'react-rainbow-components'
+import { Link } from 'react-router-dom'
 
 const mapStateToProps = ({ userListState }) => {
   return { userListState }
@@ -51,14 +52,7 @@ const UserDetail = (props) => {
                     (recipe, idx) => (
                       <div key={idx}>
                         {' '}
-                        <button
-                          onClick={() => {
-                            props.history.push(`/recipes/${recipe.id}`)
-                          }}
-                        >
-                          Go To Recipe
-                        </button>
-                        {recipe.title}
+                        <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
                       </div>
                     )
                   )}

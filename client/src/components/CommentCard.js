@@ -9,9 +9,8 @@ const CommentCard = (props) => {
       <p>
         {' '}
         <Link to={`/users/${props.comment.commenter_id}`}>
-          {username}:
-        </Link>{' '}
-        {content}
+          {username}
+        </Link>: {content}
       </p>
     </div>
   )
