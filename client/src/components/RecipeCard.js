@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Card, Button, ButtonIcon, ButtonGroup } from 'react-rainbow-components'
 import CommentForm from './CommentForm'
 import RecipeCardComments from './RecipeCardComments'
@@ -157,7 +158,11 @@ const RecipeCard = (props) => {
             icon={
               <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
             }
-            title={props.recipe.recipe_poster.username}
+            title={
+              <Link to={`/users/${props.recipe.recipe_poster.id}`}>
+                {props.recipe.recipe_poster.username}
+              </Link>
+            }
             // actions={<Button variant="neutral" label="Add" />}
             actions={
               <ButtonGroup>
@@ -209,6 +214,21 @@ const RecipeCard = (props) => {
               </h1>
             </div>
             <RecipeCardComments comments={props.recipe.comments} />
+            <ButtonIcon
+              variant="border-filled"
+              size="medium"
+              tooltip="Add Comment"
+              icon={<FontAwesomeIcon icon={faCommentAlt} />}
+              onClick={() => {
+                console.log(props.recipeListState.selectedRecipe)
+                props.fetchRecipeDetailsForUpdate(props.recipe)
+                console.log(props.recipeListState.selectedRecipe)
+                props.history.push(`/recipes/${props.recipe.recipe.id}`)
+              }}
+            />
+            <br />
+            <br />
+            <br />
           </Card>
         </div>
       ) : (
@@ -217,7 +237,11 @@ const RecipeCard = (props) => {
             icon={
               <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
             }
-            title={props.recipe.recipe_poster.username}
+            title={
+              <Link to={`/users/${props.recipe.recipe_poster.id}`}>
+                {props.recipe.recipe_poster.username}
+              </Link>
+            }
             // actions={<Button variant="neutral" label="Add" />}
             actions={
               <Button
@@ -243,15 +267,18 @@ const RecipeCard = (props) => {
             <ButtonIcon
               variant="border-filled"
               size="medium"
-              tooltip="Edit"
+              tooltip="Add Comment"
               icon={<FontAwesomeIcon icon={faCommentAlt} />}
               onClick={() => {
                 console.log(props.recipeListState.selectedRecipe)
                 props.fetchRecipeDetailsForUpdate(props.recipe)
                 console.log(props.recipeListState.selectedRecipe)
-                props.history.push(`/recipe/${props.recipe.recipe.id}`)
+                props.history.push(`/recipes/${props.recipe.recipe.id}`)
               }}
             />
+            <br />
+            <br />
+            <br />
           </Card>
         </div>
       )}

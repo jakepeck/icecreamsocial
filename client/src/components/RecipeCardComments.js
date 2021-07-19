@@ -16,11 +16,11 @@ const RecipeCardComments = (props) => {
   }
   return (
     <div>
-      Recipe Card Comments Section
+      {/* Recipe Card Comments Section */}
       {commentsMap.length > 0 ? (
         commentsMap
       ) : (
-        <h2>No comments yet... Be the first to add one!</h2>
+        <p>No comments yet... Be the first to add one!</p>
       )}
     </div>
   )
