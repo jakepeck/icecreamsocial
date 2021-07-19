@@ -52,97 +52,197 @@ const RecipeCard = (props) => {
     console.log(res)
   }
 
+  //   return (
+  //     <div className="rainbow-m-around_large">
+  //       <Card
+  //         icon={
+  //           <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
+  //         }
+  //         title={props.recipe.recipe_poster.username}
+  //         // actions={<Button variant="neutral" label="Add" />}
+  //         actions={
+  //           <Button
+  //             variant="neutral"
+  //             label="View Details"
+  //             onClick={() => {
+  //               pushToRecipeDetailPage(props.recipe.recipe.id)
+  //             }}
+  //           />
+  //         }
+  //       >
+  //         {props.appState.authenticated &&
+  //         props.appState.userCredentials.id === props.recipe.recipe_poster.id ? (
+  //           <div>
+  //             {/* <button
+  //               onClick={() => {
+  //                 // console.log(props.recipeListState.selectedRecipe)
+  //                 // props.fetchRecipeDetails(props.recipe.recipe.id)
+  //                 deleteHelper(props.recipe.recipe.id)
+  //               }}
+  //             >
+  //               Delete Recipe
+  //             </button> */}
+
+  //             <ButtonIcon
+  //               variant="border-filled"
+  //               size="medium"
+  //               tooltip="Delete"
+  //               icon={<FontAwesomeIcon icon={faTrashAlt} />}
+  //               onClick={() => {
+  //                 // console.log(props.recipeListState.selectedRecipe)
+  //                 // props.fetchRecipeDetails(props.recipe.recipe.id)
+  //                 deleteHelper(props.recipe.recipe.id)
+  //               }}
+  //             />
+
+  //             <ButtonIcon
+  //               variant="border-filled"
+  //               size="medium"
+  //               tooltip="Edit"
+  //               icon={<FontAwesomeIcon icon={faPencilAlt} />}
+  //               onClick={() => {
+  //                 console.log(props.recipeListState.selectedRecipe)
+  //                 props.fetchRecipeDetailsForUpdate(props.recipe)
+  //                 console.log(props.recipeListState.selectedRecipe)
+  //                 props.history.push(`/updaterecipe/${props.recipe.recipe.id}`)
+  //               }}
+  //             />
+
+  //             {/* {' '}
+  //             <button
+  //               onClick={() => {
+  //                 console.log(props.recipeListState.selectedRecipe)
+  //                 props.fetchRecipeDetailsForUpdate(props.recipe)
+  //                 console.log(props.recipeListState.selectedRecipe)
+  //                 props.history.push(`/updaterecipe/${props.recipe.recipe.id}`)
+  //               }}
+  //             >
+  //               Update Recipe
+  //             </button> */}
+  //           </div>
+  //         ) : (
+  //           <div></div>
+  //         )}
+  //         <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
+  //           <img
+  //             src={`${props.recipe.recipe.photo}`}
+  //             alt="picture of dessert"
+  //             // width="200"
+  //           />
+  //           <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
+  //             {props.recipe.recipe.title}{' '}
+  //           </h1>
+  //         </div>
+
+  //         <button
+  //           onClick={() => {
+  //             pushToRecipeDetailPage(props.recipe.recipe.id)
+  //           }}
+  //         >
+  //           View Recipe Details
+  //         </button>
+  //         <RecipeCardComments comments={props.recipe.comments} />
+  //       </Card>
+  //     </div>
+  //   )
+  // }
+
   return (
-    <div className="rainbow-m-around_large">
-      <Card
-        icon={
-          <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
-        }
-        title={props.recipe.recipe_poster.username}
-        // actions={<Button variant="neutral" label="Add" />}
-        actions={
-          <Button
-            variant="neutral"
-            label="View Details"
-            onClick={() => {
-              pushToRecipeDetailPage(props.recipe.recipe.id)
-            }}
-          />
-        }
-      >
-        {props.appState.authenticated &&
-        props.appState.userCredentials.id === props.recipe.recipe_poster.id ? (
-          <div>
-            {/* <button
-              onClick={() => {
-                // console.log(props.recipeListState.selectedRecipe)
-                // props.fetchRecipeDetails(props.recipe.recipe.id)
-                deleteHelper(props.recipe.recipe.id)
-              }}
-            >
-              Delete Recipe
-            </button> */}
-
-            <ButtonIcon
-              variant="border-filled"
-              size="medium"
-              tooltip="Delete"
-              icon={<FontAwesomeIcon icon={faTrashAlt} />}
-              onClick={() => {
-                // console.log(props.recipeListState.selectedRecipe)
-                // props.fetchRecipeDetails(props.recipe.recipe.id)
-                deleteHelper(props.recipe.recipe.id)
-              }}
-            />
-
-            <ButtonIcon
-              variant="border-filled"
-              size="medium"
-              tooltip="Edit"
-              icon={<FontAwesomeIcon icon={faPencilAlt} />}
-              onClick={() => {
-                console.log(props.recipeListState.selectedRecipe)
-                props.fetchRecipeDetailsForUpdate(props.recipe)
-                console.log(props.recipeListState.selectedRecipe)
-                props.history.push(`/updaterecipe/${props.recipe.recipe.id}`)
-              }}
-            />
-
-            {/* {' '}
-            <button
-              onClick={() => {
-                console.log(props.recipeListState.selectedRecipe)
-                props.fetchRecipeDetailsForUpdate(props.recipe)
-                console.log(props.recipeListState.selectedRecipe)
-                props.history.push(`/updaterecipe/${props.recipe.recipe.id}`)
-              }}
-            >
-              Update Recipe
-            </button> */}
-          </div>
-        ) : (
-          <div></div>
-        )}
-        <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
-          <img
-            src={`${props.recipe.recipe.photo}`}
-            alt="picture of dessert"
-            // width="200"
-          />
-          <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
-            {props.recipe.recipe.title}{' '}
-          </h1>
+    <div>
+      {props.appState.authenticated &&
+      props.appState.userCredentials.id === props.recipe.recipe_poster.id ? (
+        <div className="rainbow-m-around_large">
+          <Card
+            icon={
+              <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
+            }
+            title={props.recipe.recipe_poster.username}
+            // actions={<Button variant="neutral" label="Add" />}
+            actions={
+              ((
+                <Button
+                  variant="neutral"
+                  label="View Details"
+                  onClick={() => {
+                    pushToRecipeDetailPage(props.recipe.recipe.id)
+                  }}
+                />
+              ),
+              (
+                <ButtonIcon
+                  variant="border-filled"
+                  size="medium"
+                  tooltip="Delete"
+                  icon={<FontAwesomeIcon icon={faTrashAlt} />}
+                  onClick={() => {
+                    // console.log(props.recipeListState.selectedRecipe)
+                    // props.fetchRecipeDetails(props.recipe.recipe.id)
+                    deleteHelper(props.recipe.recipe.id)
+                  }}
+                />
+              ),
+              (
+                <ButtonIcon
+                  variant="border-filled"
+                  size="medium"
+                  tooltip="Edit"
+                  icon={<FontAwesomeIcon icon={faPencilAlt} />}
+                  onClick={() => {
+                    console.log(props.recipeListState.selectedRecipe)
+                    props.fetchRecipeDetailsForUpdate(props.recipe)
+                    console.log(props.recipeListState.selectedRecipe)
+                    props.history.push(
+                      `/updaterecipe/${props.recipe.recipe.id}`
+                    )
+                  }}
+                />
+              ))
+            }
+          >
+            <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
+              <img
+                src={`${props.recipe.recipe.photo}`}
+                alt="picture of dessert"
+                // width="200"
+              />
+              <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
+                {props.recipe.recipe.title}{' '}
+              </h1>
+            </div>
+            <RecipeCardComments comments={props.recipe.comments} />
+          </Card>
         </div>
-
-        <button
-          onClick={() => {
-            pushToRecipeDetailPage(props.recipe.recipe.id)
-          }}
-        >
-          View Recipe Details
-        </button>
-        <RecipeCardComments comments={props.recipe.comments} />
-      </Card>
+      ) : (
+        <div className="rainbow-m-around_large">
+          <Card
+            icon={
+              <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
+            }
+            title={props.recipe.recipe_poster.username}
+            // actions={<Button variant="neutral" label="Add" />}
+            actions={
+              <Button
+                variant="neutral"
+                label="View Details"
+                onClick={() => {
+                  pushToRecipeDetailPage(props.recipe.recipe.id)
+                }}
+              />
+            }
+          >
+            <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
+              <img
+                src={`${props.recipe.recipe.photo}`}
+                alt="picture of dessert"
+                // width="200"
+              />
+              <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
+                {props.recipe.recipe.title}{' '}
+              </h1>
+            </div>
+          </Card>
+        </div>
+      )}
     </div>
   )
 }
