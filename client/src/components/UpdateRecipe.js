@@ -62,49 +62,51 @@ const UpdateRecipe = (props) => {
 
   return (
     <div>
-      <h1>Update your recipe!</h1>
+      <Card>
+        <h1>Update your recipe!</h1>
 
-      <form onSubmit={submitRecipeUpdate}>
-        <label>Title</label>
-        <input
-          onChange={handleChange}
-          type="text"
-          name="title"
-          value={recipeFormData.title}
-          placeholder={props.recipeListState.selectedRecipe.recipe.title}
-        />
+        <form className="recipeCreateForm" onSubmit={submitRecipeUpdate}>
+          <label>Title</label>
+          <input
+            onChange={handleChange}
+            type="text"
+            name="title"
+            value={recipeFormData.title}
+            placeholder={props.recipeListState.selectedRecipe.recipe.title}
+          />
 
-        <label>Image URL</label>
-        <input
-          onChange={handleChange}
-          type="text"
-          name="photo"
-          value={recipeFormData.photo}
-          placeholder={props.recipeListState.selectedRecipe.recipe.photo}
-        />
+          <label>Image URL</label>
+          <input
+            onChange={handleChange}
+            type="text"
+            name="photo"
+            value={recipeFormData.photo}
+            placeholder={props.recipeListState.selectedRecipe.recipe.photo}
+          />
 
-        <label>Body</label>
-        <textarea
-          onChange={handleChange}
-          type="text"
-          name="content"
-          value={recipeFormData.content}
-          placeholder={props.recipeListState.selectedRecipe.recipe.content}
-        />
+          <label>Body</label>
+          <textarea
+            onChange={handleChange}
+            type="text"
+            name="content"
+            value={recipeFormData.content}
+            placeholder={props.recipeListState.selectedRecipe.recipe.content}
+          />
 
-        <button
-          onClick={submitRecipeUpdate}
-          disabled={
-            !recipeFormData.title ||
-            !recipeFormData.content ||
-            !recipeFormData.photo
-          }
-          color="blue"
-          fluid
-        >
-          Update Your Recipe
-        </button>
-      </form>
+          <button
+            onClick={submitRecipeUpdate}
+            disabled={
+              !recipeFormData.title ||
+              !recipeFormData.content ||
+              !recipeFormData.photo
+            }
+            color="blue"
+            fluid
+          >
+            Update Your Recipe
+          </button>
+        </form>
+      </Card>
     </div>
   )
 }
