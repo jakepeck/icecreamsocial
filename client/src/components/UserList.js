@@ -49,58 +49,6 @@ const UserList = (props) => {
 
   return (
     <div>
-      {props.userListState.selectedUser !== null ? (
-        <div className="userDetails">
-          <h1>{props.userListState.selectedUser.user.username}</h1>
-          <div>
-            <h2>{props.userListState.selectedUser.user.created_at}</h2>
-            <h3>
-              Recent Recipes from{' '}
-              {props.userListState.selectedUser.user.username}
-            </h3>
-            {props.userListState.selectedUser.user_recipes.length > 0 ? (
-              <div>
-                {props.userListState.selectedUser.user_recipes.map(
-                  (recipe, idx) => (
-                    <div key={idx}>
-                      {' '}
-                      <button
-                        onClick={() => {
-                          pushToRecipePage(recipe.id)
-                        }}
-                      >
-                        Go To Recipe
-                      </button>
-                      {recipe.title}
-                    </div>
-                  )
-                )}
-              </div>
-            ) : (
-              <h4>No recipes posted by this member yet</h4>
-            )}
-
-            <h3>
-              Recent Comments from{' '}
-              {props.userListState.selectedUser.user.username}
-            </h3>
-            {props.userListState.selectedUser.user_comments.length > 0 ? (
-              <div>
-                {props.userListState.selectedUser.user_comments.map(
-                  (comment, idx) => (
-                    <div key={idx}>{comment.content}</div>
-                  )
-                )}
-              </div>
-            ) : (
-              <h4>No comments posted by this member yet</h4>
-            )}
-          </div>
-        </div>
-      ) : (
-        'Click on a user to expand details'
-      )}
-      User List
       <div className="grid">{usersMap}</div>
     </div>
   )
