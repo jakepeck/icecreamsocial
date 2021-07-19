@@ -60,9 +60,9 @@ const RecipeDetail = (props) => {
               <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
                 {props.recipeListState.selectedRecipe.recipe.title}{' '}
               </h1>
-              <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
+              {/* <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
                 {props.recipeListState.selectedRecipe.recipe_poster.username}{' '}
-              </h1>
+              </h1> */}
               <p>{props.recipeListState.selectedRecipe.recipe.content}</p>
             </div>
 

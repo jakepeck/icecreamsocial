@@ -1,4 +1,4 @@
-import { Button, Form, Icon, Modal } from 'react-rainbow-components'
+import { Button, Form, Icon, Modal, Card } from 'react-rainbow-components'
 import { connect } from 'react-redux'
 import Client from '../services'
 import { useState } from 'react'
@@ -40,49 +40,51 @@ const CreateRecipe = (props) => {
 
   return (
     <div>
-      <h1>Create A Post!</h1>
+      <Card>
+        <h1>Post Your Recipe!</h1>
 
-      <form onSubmit={submitRecipe}>
-        <label>Title</label>
-        <input
-          onChange={handleChange}
-          type="text"
-          name="title"
-          value={recipeFormData.title}
-          placeholder="Enter a title"
-        />
+        <form className="recipeCreateForm" onSubmit={submitRecipe}>
+          <label>Recipe Title: </label>
+          <input
+            onChange={handleChange}
+            type="text"
+            name="title"
+            value={recipeFormData.title}
+            placeholder="Enter a title for your delicious recipe!"
+          />
 
-        <label>Image URL</label>
-        <input
-          onChange={handleChange}
-          type="text"
-          name="photo"
-          value={recipeFormData.photo}
-          placeholder="Enter an image url"
-        />
+          <label>Recipe Image URL: </label>
+          <input
+            onChange={handleChange}
+            type="text"
+            name="photo"
+            value={recipeFormData.photo}
+            placeholder="Enter an image url here to show off your awesome creation"
+          />
 
-        <label>Body</label>
-        <textarea
-          onChange={handleChange}
-          type="text"
-          name="content"
-          value={recipeFormData.content}
-          placeholder="Tell us about your recipe"
-        />
+          <label>Recipe Content: </label>
+          <textarea
+            onChange={handleChange}
+            type="text"
+            name="content"
+            value={recipeFormData.content}
+            placeholder="Tell us about your recipe! Add ingredients, processes, expected time and all the other fun details here!"
+          />
 
-        <button
-          onClick={submitRecipe}
-          disabled={
-            !recipeFormData.title ||
-            !recipeFormData.content ||
-            !recipeFormData.photo
-          }
-          color="blue"
-          fluid
-        >
-          Post Your Recipe
-        </button>
-      </form>
+          <Button
+            onClick={submitRecipe}
+            disabled={
+              !recipeFormData.title ||
+              !recipeFormData.content ||
+              !recipeFormData.photo
+            }
+            color="blue"
+            fluid
+          >
+            Post Your Recipe
+          </Button>
+        </form>
+      </Card>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import {
   LoadUserList,
   LoadSelectedUser
 } from '../store/actions/UserListActions'
-import { Card } from 'react-rainbow-components'
+import { Card, Button } from 'react-rainbow-components'
 import store from '../store'
 
 const mapStateToProps = ({ userListState }) => {
@@ -35,14 +35,14 @@ const UserList = (props) => {
       <Card key={idx}>
         <h1>{user.username}</h1>
         <p>{user.created_at}</p>
-        <button
+        <Button
           onClick={() => {
             props.fetchUserDetails(user.id)
             props.history.push(`/users/${user.id}`)
           }}
         >
           View User Details
-        </button>
+        </Button>
       </Card>
     )
   })
