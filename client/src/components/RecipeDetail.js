@@ -7,6 +7,7 @@ import { Card, ButtonIcon, Button } from 'react-rainbow-components'
 //   faAngleDown
 // } from '@fortawesome/free-solid-svg-icons'
 // import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { Link } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
@@ -58,7 +59,13 @@ const RecipeDetail = (props) => {
             icon={
               <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
             }
-            title={props.recipeListState.selectedRecipe.recipe_poster.username}
+            title={
+              <Link
+                to={`/users/${props.recipeListState.selectedRecipe.recipe_poster.id}`}
+              >
+                {props.recipeListState.selectedRecipe.recipe_poster.username}
+              </Link>
+            }
             // actions={<Button variant="neutral" label="Add" />}
           >
             <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
