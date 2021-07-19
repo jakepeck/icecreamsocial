@@ -38,22 +38,6 @@ const RecipeList = (props) => {
 
   return (
     <div>
-      {props.recipeListState.selectedRecipe !== null ? (
-        <div className="recipeDetails">
-          <img
-            src={`${props.recipeListState.selectedRecipe.photo}`}
-            alt="photo"
-            width="200"
-          />
-          <h1>{props.recipeListState.selectedRecipe.title}</h1>
-          <div>
-            <h2>{props.recipeListState.selectedRecipe.content}</h2>
-          </div>
-        </div>
-      ) : (
-        'Click on a recipe to expand details'
-      )}
-      Recipe List
       <div className="grid">{recipesMap}</div>
     </div>
   )
