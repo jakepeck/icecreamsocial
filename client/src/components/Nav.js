@@ -1,6 +1,6 @@
 import { NavLink, useHistory } from 'react-router-dom'
-import React, { useEffect } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React from 'react'
+// import { Route, Switch } from 'react-router-dom'
 import store from '../store'
 import { SET_UNAUTHENTICATED } from '../store/types'
 import { connect } from 'react-redux'

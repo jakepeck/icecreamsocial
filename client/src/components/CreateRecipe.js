@@ -1,4 +1,4 @@
-import { Button, Form, Icon, Modal, Card } from 'react-rainbow-components'
+import { Button, Card } from 'react-rainbow-components'
 import { connect } from 'react-redux'
 import Client from '../services'
 import { useState } from 'react'
@@ -29,6 +29,7 @@ const CreateRecipe = (props) => {
       const recipe = { poster_id: poster, ...recipeFormData }
       console.log(recipe)
       const res = await Client.post(`${BASE_URL}/recipes`, recipe)
+      console.log(res)
       props.history.push('/recipes')
       // setPosts([...posts, res.data])
       // setRecipeFormData({ title: '', photo: '', content: '' })

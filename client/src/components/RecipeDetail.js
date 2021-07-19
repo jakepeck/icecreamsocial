@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Card, ButtonIcon, Button } from 'react-rainbow-components'
+import { Card } from 'react-rainbow-components'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import {
 //   faTasks,
@@ -9,14 +9,14 @@ import { Card, ButtonIcon, Button } from 'react-rainbow-components'
 // import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { Link } from 'react-router-dom'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-regular-svg-icons'
-import {
-  faTrashAlt,
-  faPencilAlt,
-  faLocationArrow,
-  faArrowDown
-} from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faStar } from '@fortawesome/free-regular-svg-icons'
+// import {
+//   faTrashAlt,
+//   faPencilAlt,
+//   faLocationArrow,
+//   faArrowDown
+// } from '@fortawesome/free-solid-svg-icons'
 import RecipeCardComments from './RecipeCardComments'
 import CommentForm from './CommentForm'
 import {
@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch) => {
 const RecipeDetail = (props) => {
   useEffect(() => {
     props.fetchRecipeDetails(props.match.params.recipe_id)
-  }, [props.match.params.recipe_id])
+  }, [props.match.params.recipe_id, props])
 
   return (
     <div>
@@ -71,7 +71,7 @@ const RecipeDetail = (props) => {
             <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
               <img
                 src={`${props.recipeListState.selectedRecipe.recipe.photo}`}
-                alt="picture of dessert"
+                alt="dessert"
               />
               <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
                 {props.recipeListState.selectedRecipe.recipe.title}{' '}

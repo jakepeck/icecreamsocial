@@ -23,7 +23,7 @@ const UserDetail = (props) => {
   useEffect(() => {
     console.log('Products useEffect firing')
     props.fetchUserDetails(props.match.params.user_id)
-  }, [props.match.params.user_id])
+  }, [props.match.params.user_id, props])
 
   return (
     <div>

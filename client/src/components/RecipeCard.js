@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Button, ButtonIcon, ButtonGroup } from 'react-rainbow-components'
-import CommentForm from './CommentForm'
+// import CommentForm from './CommentForm'
 import RecipeCardComments from './RecipeCardComments'
 import {
   LoadRecipeList,
@@ -12,12 +12,10 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-regular-svg-icons'
+// import { faStar } from '@fortawesome/free-regular-svg-icons'
 import {
   faTrashAlt,
   faPencilAlt,
-  faLocationArrow,
-  faArrowDown,
   faCommentAlt
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -206,7 +204,7 @@ const RecipeCard = (props) => {
             <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
               <img
                 src={`${props.recipe.recipe.photo}`}
-                alt="picture of dessert"
+                alt="dessert"
                 // width="200"
               />
               <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
@@ -256,7 +254,7 @@ const RecipeCard = (props) => {
             <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
               <img
                 src={`${props.recipe.recipe.photo}`}
-                alt="picture of dessert"
+                alt="dessert"
                 // width="200"
               />
               <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">

@@ -4,7 +4,7 @@ import {
   LoadRecipeList,
   LoadSelectedRecipe
 } from '../store/actions/RecipeListActions'
-import { Card } from 'react-rainbow-components'
+// import { Card } from 'react-rainbow-components'
 import RecipeCard from './RecipeCard'
 
 const mapStateToProps = ({ recipeListState }) => {
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 const RecipeList = (props) => {
   useEffect(() => {
     props.fetchRecipeList()
-  }, [props.recipeListState.selectedRecipe])
+  }, [props.recipeListState.selectedRecipe, props])
 
   console.log(props)
 

@@ -16,6 +16,7 @@ const Register = (props) => {
     e.preventDefault()
     try {
       const res = await Client.post(`${BASE_URL}/auth/register`, registerForm)
+      console.log(res)
       handleRegisterForm({ email: '', password: '', username: '' })
     } catch (error) {
       console.log('register handleSubmit failed')

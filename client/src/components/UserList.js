@@ -21,11 +21,11 @@ const mapDispatchToProps = (dispatch) => {
 const UserList = (props) => {
   useEffect(() => {
     props.fetchUserList()
-  }, [props.userListState.selectedUser])
+  }, [props.userListState.selectedUser, props])
 
-  const pushToRecipePage = (recipeId) => {
-    props.history.push(`/recipes/${recipeId}`)
-  }
+  // const pushToRecipePage = (recipeId) => {
+  //   props.history.push(`/recipes/${recipeId}`)
+  // }
 
   console.log(props)
   console.log(store.getState())

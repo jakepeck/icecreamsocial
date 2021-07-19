@@ -1,6 +1,6 @@
-import { Button, Form, Icon, Modal, Card } from 'react-rainbow-components'
+import { Card } from 'react-rainbow-components'
 import { connect } from 'react-redux'
-import Client from '../services'
+// import Client from '../services'
 import { useState } from 'react'
 import { BASE_URL } from '../globals'
 import axios from 'axios'
@@ -8,7 +8,7 @@ import {
   LoadRecipeList,
   LoadSelectedRecipe
 } from '../store/actions/RecipeListActions'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const mapStateToProps = ({ appState, recipeListState }) => {
   return { appState, recipeListState }
@@ -51,6 +51,7 @@ const UpdateRecipe = (props) => {
         `${BASE_URL}/recipes/${props.recipeListState.selectedRecipe.recipe.id}`,
         recipe
       )
+      console.log(res)
       props.history.push(`/recipes`)
       // setPosts([...posts, res.data])
       // setRecipeFormData({ title: '', photo: '', content: '' })
