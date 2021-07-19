@@ -88,7 +88,7 @@ const RecipeDetail = (props) => {
             <CommentForm
               recipe_id={props.recipeListState.selectedRecipe.recipe.id}
             />
-            <div className="rainbow-p-right_large">
+            {/* <div className="rainbow-p-right_large">
               <ButtonIcon
                 variant="border-filled"
                 size="medium"
@@ -103,7 +103,7 @@ const RecipeDetail = (props) => {
                 tooltip="Delete"
                 icon={<FontAwesomeIcon icon={faTrashAlt} />}
               />
-            </div>
+            </div> */}
 
             {props.appState.authenticated &&
             props.appState.userCredentials.id ===
