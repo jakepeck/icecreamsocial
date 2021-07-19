@@ -16,7 +16,8 @@ import {
   faTrashAlt,
   faPencilAlt,
   faLocationArrow,
-  faArrowDown
+  faArrowDown,
+  faCommentAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 const mapStateToProps = ({
@@ -239,6 +240,18 @@ const RecipeCard = (props) => {
               </h1>
             </div>
             <RecipeCardComments comments={props.recipe.comments} />
+            <ButtonIcon
+              variant="border-filled"
+              size="medium"
+              tooltip="Edit"
+              icon={<FontAwesomeIcon icon={faCommentAlt} />}
+              onClick={() => {
+                console.log(props.recipeListState.selectedRecipe)
+                props.fetchRecipeDetailsForUpdate(props.recipe)
+                console.log(props.recipeListState.selectedRecipe)
+                props.history.push(`/recipe/${props.recipe.recipe.id}`)
+              }}
+            />
           </Card>
         </div>
       )}

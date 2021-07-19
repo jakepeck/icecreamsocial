@@ -1,4 +1,4 @@
-import { Button, Form, Icon, Modal } from 'react-rainbow-components'
+import { Button, Form, Icon, Modal, Card } from 'react-rainbow-components'
 import { connect } from 'react-redux'
 import Client from '../services'
 import { useState } from 'react'
