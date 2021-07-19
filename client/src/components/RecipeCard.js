@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button } from 'react-rainbow-components'
+import { Card, Button, ButtonIcon } from 'react-rainbow-components'
 import CommentForm from './CommentForm'
 import RecipeCardComments from './RecipeCardComments'
 import {
@@ -10,6 +10,14 @@ import {
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-regular-svg-icons'
+import {
+  faTrashAlt,
+  faPencilAlt,
+  faLocationArrow,
+  faArrowDown
+} from '@fortawesome/free-solid-svg-icons'
 
 const mapStateToProps = ({
   recipeListState,
@@ -62,10 +70,10 @@ const RecipeCard = (props) => {
           />
         }
       >
-        {/* {props.appState.authenticated &&
+        {props.appState.authenticated &&
         props.appState.userCredentials.id === props.recipe.recipe_poster.id ? (
           <div>
-            <button
+            {/* <button
               onClick={() => {
                 // console.log(props.recipeListState.selectedRecipe)
                 // props.fetchRecipeDetails(props.recipe.recipe.id)
@@ -73,7 +81,34 @@ const RecipeCard = (props) => {
               }}
             >
               Delete Recipe
-            </button>{' '}
+            </button> */}
+
+            <ButtonIcon
+              variant="border-filled"
+              size="medium"
+              tooltip="Delete"
+              icon={<FontAwesomeIcon icon={faTrashAlt} />}
+              onClick={() => {
+                // console.log(props.recipeListState.selectedRecipe)
+                // props.fetchRecipeDetails(props.recipe.recipe.id)
+                deleteHelper(props.recipe.recipe.id)
+              }}
+            />
+
+            <ButtonIcon
+              variant="border-filled"
+              size="medium"
+              tooltip="Edit"
+              icon={<FontAwesomeIcon icon={faPencilAlt} />}
+              onClick={() => {
+                console.log(props.recipeListState.selectedRecipe)
+                props.fetchRecipeDetailsForUpdate(props.recipe)
+                console.log(props.recipeListState.selectedRecipe)
+                props.history.push(`/updaterecipe/${props.recipe.recipe.id}`)
+              }}
+            />
+
+            {/* {' '}
             <button
               onClick={() => {
                 console.log(props.recipeListState.selectedRecipe)
@@ -83,11 +118,11 @@ const RecipeCard = (props) => {
               }}
             >
               Update Recipe
-            </button>
+            </button> */}
           </div>
         ) : (
           <div></div>
-        )} */}
+        )}
         <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
           <img
             src={`${props.recipe.recipe.photo}`}

@@ -7,7 +7,7 @@ import { Card, ButtonIcon, Button } from 'react-rainbow-components'
 //   faAngleDown
 // } from '@fortawesome/free-solid-svg-icons'
 // import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { ButtonIcon } from 'react-rainbow-components'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
 import {
