@@ -20,10 +20,12 @@ const mapDispatchToProps = (dispatch) => {
 
 const UserDetail = (props) => {
   console.log(props)
+  const { fetchUserDetails } = props
+
   useEffect(() => {
     console.log('Products useEffect firing')
-    props.fetchUserDetails(props.match.params.user_id)
-  }, [props.match.params.user_id, props])
+    fetchUserDetails(props.match.params.user_id)
+  }, [props.match.params.user_id, fetchUserDetails])
 
   return (
     <div>

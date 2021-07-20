@@ -19,9 +19,12 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const UserList = (props) => {
+  const { selectedUser } = props.userListState
+  const { fetchUserList } = props
+
   useEffect(() => {
-    props.fetchUserList()
-  }, [props.userListState.selectedUser, props])
+    fetchUserList()
+  }, [selectedUser, fetchUserList])
 
   // const pushToRecipePage = (recipeId) => {
   //   props.history.push(`/recipes/${recipeId}`)

@@ -19,9 +19,16 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const RecipeList = (props) => {
+  // const { selectedRecipe } = props.recipeListState
+  const { fetchRecipeList } = props
+
   useEffect(() => {
-    props.fetchRecipeList()
-  }, [props.recipeListState.selectedRecipe, props])
+    fetchRecipeList()
+  }, [fetchRecipeList])
+
+  // useEffect(() => {
+  //   props.fetchRecipeList()
+  // }, [props.recipeListState.selectedRecipe])
 
   console.log(props)
 

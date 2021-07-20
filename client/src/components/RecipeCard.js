@@ -153,6 +153,7 @@ const RecipeCard = (props) => {
       props.appState.userCredentials.id === props.recipe.recipe_poster.id ? (
         <div className="rainbow-m-around_large">
           <Card
+            className="recipeCard"
             icon={
               <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
             }
@@ -232,6 +233,7 @@ const RecipeCard = (props) => {
       ) : (
         <div className="rainbow-m-around_large">
           <Card
+            className="recipeCard"
             icon={
               <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
             }

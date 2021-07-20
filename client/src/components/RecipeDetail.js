@@ -40,9 +40,11 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 const RecipeDetail = (props) => {
+  const { recipe_id } = props.match.params
+  const { fetchRecipeDetails } = props
   useEffect(() => {
-    props.fetchRecipeDetails(props.match.params.recipe_id)
-  }, [props.match.params.recipe_id, props])
+    fetchRecipeDetails(recipe_id)
+  }, [recipe_id, fetchRecipeDetails])
 
   return (
     <div>
@@ -56,6 +58,7 @@ const RecipeDetail = (props) => {
       {props.recipeListState.selectedRecipe !== null ? (
         <div className="rainbow-m-around_large">
           <Card
+            className="recipeDetail"
             icon={
               <span className="rainbow-background-color_success rainbow-border-radius_circle rainbow-align-content_center"></span>
             }
