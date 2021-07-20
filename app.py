@@ -27,7 +27,7 @@ cors = CORS(app)
 api = Api(app)
 
 # Deployment configuration
-DATABASE_URL = os.getenv('DATABASE_URL', 'APP_SECRET')
+DATABASE_URL = os.getenv('DATABASE_URL')
 if DATABASE_URL:
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL.replace(
