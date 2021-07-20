@@ -1,6 +1,5 @@
 import Client from './index'
 
-
 export const GetCommentList = async () => {
   try {
     // console.log('get users in list service called')
@@ -21,6 +20,16 @@ export const SetSelectedComment = async (commentId) => {
     const res = await Client.get(`/comments/${commentId}`)
     // const res = await Client.get(`/recipes/${movieId}`, axiosConfig)
     // console.log(res.data.user)
+    return res.data
+  } catch (e) {
+    console.log(e)
+    throw e
+  }
+}
+
+export const AddComment = async (comment) => {
+  try {
+    const res = await Client.post('/comments', comment)
     return res.data
   } catch (e) {
     console.log(e)

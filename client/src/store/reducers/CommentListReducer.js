@@ -1,7 +1,8 @@
 const {
   COMMENT_LIST_LOADING_TYPE,
   GET_COMMENT_LIST,
-  SET_SELECTED_COMMENT
+  SET_SELECTED_COMMENT,
+  ADD_COMMENT
 } = require('../types')
 
 const iState = {
@@ -18,6 +19,8 @@ const CommentListReducer = (state = iState, action) => {
       return { ...state, comments: action.payload }
     case SET_SELECTED_COMMENT:
       return { ...state, selectedComment: action.payload }
+    case ADD_COMMENT:
+      return { ...state, comments: [...state.comments, action.payload] }
     default:
       return { ...state }
   }
