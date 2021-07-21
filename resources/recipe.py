@@ -24,18 +24,11 @@ class Recipes(Resource):
 
 class RecipeDetail(Resource):
     def get(self, recipe_id):
-        recipe = Recipe.find_by_id(recipe_id)
         recipe2 = Recipe.query.options(joinedload(
             'user')).filter_by(id=recipe_id).first()
         recipe_poster = recipe2.user
-        # return {**recipe.json(), **user.json()}
-        # user = User.find_by_id(recipe.poster_id)
-        return {**recipe2.json(), "recipe_poster": recipe_poster.json()}
 
-        # alternate/original solution
-        ## recipe = Recipe.find_by_id(recipe_id)
-        ## user = User.find_by_id(recipe.poster_id)
-        # return {**recipe.json(), "poster": user.json()}
+        return {**recipe2.json(), "recipe_poster": recipe_poster.json()}
 
     def put(self, recipe_id):
         data = request.get_json()
@@ -56,25 +49,8 @@ class RecipeDetail(Resource):
 
 class RecipeSuperDetail(Resource):
     def get(self):
-        # recipes = Recipe.query.options(joinedload(
-        #     'user'))
         recipes = Recipe.query
         return [{"recipe": recipe.json(), "recipe_poster": recipe.user.json(), "comments": [{"comment": comment.json(), "commenter_username": comment.user.username} for comment in recipe.comments]}for recipe in recipes]
-
-    # def get(self, r_id):
-
-        # recipe = Recipe.find_by_id(r_id)
-        # # recipe2 = Recipe.query.options(joinedload(
-        # #     'user')).filter_by(id=recipe_id).first()
-        # recipe_poster = recipe.user
-        # rec_comments = recipe.comments
-        # print(rec_comments)
-        # recipe_comments = Comment.query.filter_by(recipe_id=r_id)
-        # comments = [comment.json() for comment in recipe_comments]
-        # print(comments)
-        # # return {**recipe.json(), **user.json()}
-        # # user = User.find_by_id(recipe.poster_id)
-        # return {**recipe.json(), "recipe_poster": recipe_poster.json(), "comments": comments}
 
 
 class RecipesByUser(Resource):
@@ -85,9 +61,5 @@ class RecipesByUser(Resource):
 
 class SingleRecipeSuperDetail(Resource):
     def get(self, recipe_id):
-        # recipes = Recipe.query.options(joinedload(
-        #     'user'))
         recipe = Recipe.find_by_id(recipe_id)
         return {"recipe": recipe.json(), "recipe_poster": recipe.user.json(), "comments": [{"comment": comment.json(), "commenter_username": comment.user.username} for comment in recipe.comments]}
-
-        # return [{"recipe": recipe.json(), "recipe_poster": recipe.user.json(), "comments": [{"comment": comment.json(), "commenter_username": comment.user.username} for comment in recipe.comments]}for recipe in recipes]

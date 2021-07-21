@@ -25,22 +25,12 @@ class Comments(Resource):
 
 class CommentDetail(Resource):
     def get(self, comment_id):
-        comment = Comment.find_by_id(comment_id)
-        comment2 = Comment.query.options(joinedload(
-            'user')).filter_by(id=comment_id).first()
         comment3 = Comment.query.filter_by(id=comment_id).first()
-        print('\n\n')
-        print(comment2, comment3.user)
+
         comment_poster = comment3.user
         recipe_post = comment3.recipe
-        # return {**recipe.json(), **user.json()}
-        # user = User.find_by_id(recipe.poster_id)
-        return {**comment3.json(), "comment_poster": comment_poster.json(), "recipe post": recipe_post.json()}
 
-        # alternate/original solution
-        ## comment = Comment.find_by_id(comment_id)
-        ## user = User.find_by_id(comment.commenter_id)
-        # return {**recipe.json(), "comment_poster": user.json()}
+        return {**comment3.json(), "comment_poster": comment_poster.json(), "recipe post": recipe_post.json()}
 
     def put(self, comment_id):
         data = request.get_json()

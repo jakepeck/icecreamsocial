@@ -25,22 +25,10 @@ class Reviews(Resource):
 
 class ReviewDetail(Resource):
     def get(self, review_id):
-        review = Review.find_by_id(review_id)
-        review2 = Review.query.options(joinedload(
-            'user')).filter_by(id=review_id).first()
         review3 = Review.query.filter_by(id=review_id).first()
-        print('\n\n')
-        print(review2, review3.user)
         review_poster = review3.user
         recipe_post = review3.recipe
-        # return {**recipe.json(), **user.json()}
-        # user = User.find_by_id(recipe.poster_id)
         return {**review3.json(), "review_poster": review_poster.json(), "recipe post": recipe_post.json()}
-
-        # alternate/original solution
-        ## review = Review.find_by_id(review_id)
-        ## user = User.find_by_id(review.reviewer_id)
-        # return {**review.json(), "review_poster": user.json()}
 
     def put(self, review_id):
         data = request.get_json()

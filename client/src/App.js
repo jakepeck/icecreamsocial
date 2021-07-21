@@ -12,15 +12,11 @@ import store from './store'
 import { SET_AUTHENTICATED, SET_USER_CREDENTIALS } from './store/types'
 import { useEffect } from 'react'
 import RecipeDetail from './components/RecipeDetail'
-// import Client from './services'
 import { BASE_URL } from './globals'
 import axios from 'axios'
 import UpdateRecipe from './components/UpdateRecipe'
 
 function App(props) {
-  // console.log('app props')
-  // console.log(props)
-
   const getToken = async () => {
     console.log('getting token')
     let token = localStorage.getItem('token')
@@ -46,9 +42,7 @@ function App(props) {
       <Nav />
       <Switch>
         <Route exact path="/users/all" component={UserList} />
-
-        <Route path="/users/:user_id" component={UserDetail} />
-
+        <Route exact path="/users/:user_id" component={UserDetail} />
         <Route exact path="/auth/register" component={Register} />
         <Route exact path="/auth/login" component={LogIn} />
         <Route exact path="/updaterecipe/:recipe_id" component={UpdateRecipe} />

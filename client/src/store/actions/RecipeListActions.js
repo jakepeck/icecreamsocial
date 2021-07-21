@@ -16,7 +16,6 @@ export const LoadRecipeList = () => {
   return async (dispatch) => {
     try {
       const recipeList = await GetRecipeList()
-      // console.log('Load recipe list called')
       dispatch({ type: GET_RECIPE_LIST, payload: recipeList })
     } catch (e) {
       console.log(e)
@@ -29,7 +28,7 @@ export const LoadSelectedRecipe = (recipeId) => {
   return async (dispatch) => {
     try {
       const recipe = await SetSelectedRecipe(recipeId)
-      // console.log('load selected recipe called')
+
       console.log('load selected recipe is ', recipe)
       dispatch({ type: SET_SELECTED_RECIPE, payload: recipe })
     } catch (e) {
@@ -42,8 +41,6 @@ export const LoadSelectedRecipe = (recipeId) => {
 export const LoadSelectedRecipeForUpdate = (recipe) => {
   return async (dispatch) => {
     try {
-      // const recipe = await SetSelectedRecipe(recipeId)
-      // console.log('load selected recipe called')
       console.log('load selected recipe is ', recipe)
       dispatch({ type: SET_SELECTED_RECIPE, payload: recipe })
     } catch (e) {
