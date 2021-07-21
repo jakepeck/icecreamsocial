@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import { Button, Form, Icon, Modal } from 'react-rainbow-components'
+import { Card, Button } from 'react-rainbow-components'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import { SET_AUTHENTICATED, SET_USER_CREDENTIALS } from '../store/types'
@@ -17,8 +17,6 @@ const LogIn = (props) => {
     email: '',
     password: ''
   })
-
-  // console.log(store.dispatch)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -40,47 +38,40 @@ const LogIn = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Email</label>
-      <input
-        type="email"
-        name="email"
-        placeholder="jane@mail.com"
-        value={loginForm.email}
-        onChange={handleChange}
-        required
-      />
+    <Card>
+      <h1>Log-In Below!</h1>
+      <form className="recipeCreateForm" onSubmit={handleSubmit}>
+        <label>Email: </label>
+        <input
+          type="email"
+          name="email"
+          placeholder="jane@mail.com"
+          value={loginForm.email}
+          onChange={handleChange}
+          required
+        />
 
-      <label>Password</label>
-      <input
-        type="password"
-        name="password"
-        placeholder="Your Password"
-        value={loginForm.password}
-        onChange={handleChange}
-        required
-      />
+        <label>Password: </label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Your Password"
+          value={loginForm.password}
+          onChange={handleChange}
+          required
+        />
 
-      <button
-        size="large"
-        color="red"
-        animated="fade"
-        // onClick={() => props.toggleLogin(false)}
-      >
-        Close
-      </button>
-      <button
-        disabled={!loginForm.email || !loginForm.password}
-        size="large"
-        color="teal"
-        animated="fade"
-        onClick={handleSubmit}
-      >
-        LogIn
-      </button>
-    </form>
-
-    // </Modal>
+        <Button
+          disabled={!loginForm.email || !loginForm.password}
+          size="small"
+          color="teal"
+          animated="fade"
+          onClick={handleSubmit}
+        >
+          LogIn
+        </Button>
+      </form>
+    </Card>
   )
 }
 

@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom'
 
 const CommentCard = (props) => {
-  // console.log(props)
-  // const { content } = props.comment
-  // const username = props.commenter_username
   return props.comment ? (
     <div>
       <p>

@@ -26,6 +26,7 @@ const Nav = (props) => {
   const logOut = () => {
     store.dispatch({ type: SET_UNAUTHENTICATED })
     localStorage.clear()
+    history.push('/recipes')
   }
 
   const handleClickLogIn = (e) => {
