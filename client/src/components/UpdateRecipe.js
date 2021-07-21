@@ -28,7 +28,7 @@ const UpdateRecipe = (props) => {
     photo: props.recipeListState.selectedRecipe.recipe.photo || '',
     content: props.recipeListState.selectedRecipe.recipe.content || ''
   })
-  console.log(recipeFormData)
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setRecipeFormData({ ...recipeFormData, [name]: value })
@@ -37,14 +37,13 @@ const UpdateRecipe = (props) => {
   const submitRecipeUpdate = async (e) => {
     e.preventDefault()
     try {
-      console.log(recipeFormData)
       const recipe = { poster_id: poster, ...recipeFormData }
-      console.log(recipe)
-      const res = await axios.put(
+
+      await axios.put(
         `${BASE_URL}/recipes/${props.recipeListState.selectedRecipe.recipe.id}`,
         recipe
       )
-      console.log(res)
+
       setRecipeFormData({ title: '', photo: '', content: '' })
       props.history.push(`/recipes`)
     } catch (error) {

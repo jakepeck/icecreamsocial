@@ -44,9 +44,6 @@ const RecipeCard = (props) => {
   }
 
   const deleteHelper = async (recipe_id) => {
-    console.log('delete recipes helpers called')
-    console.log(recipe_id)
-
     props.deleteRecipe(recipe_id)
   }
 
@@ -91,9 +88,7 @@ const RecipeCard = (props) => {
                   tooltip="Edit"
                   icon={<FontAwesomeIcon icon={faPencilAlt} />}
                   onClick={() => {
-                    console.log(props.recipeListState.selectedRecipe)
                     props.fetchRecipeDetailsForUpdate(props.recipe)
-                    console.log(props.recipeListState.selectedRecipe)
                     props.history.push(
                       `/updaterecipe/${props.recipe.recipe.id}`
                     )
@@ -109,15 +104,14 @@ const RecipeCard = (props) => {
               </h1>
             </div>
             <RecipeCardComments comments={props.recipe.comments} />
+            <br />
             <ButtonIcon
               variant="border-filled"
               size="medium"
               tooltip="Add Comment"
               icon={<FontAwesomeIcon icon={faCommentAlt} />}
               onClick={() => {
-                console.log(props.recipeListState.selectedRecipe)
                 props.fetchRecipeDetailsForUpdate(props.recipe)
-                console.log(props.recipeListState.selectedRecipe)
                 props.history.push(`/recipes/${props.recipe.recipe.id}`)
               }}
             />
@@ -159,15 +153,14 @@ const RecipeCard = (props) => {
               </h1>
             </div>
             <RecipeCardComments comments={props.recipe.comments} />
+            <br />
             <ButtonIcon
               variant="border-filled"
               size="medium"
               tooltip="Add Comment"
               icon={<FontAwesomeIcon icon={faCommentAlt} />}
               onClick={() => {
-                console.log(props.recipeListState.selectedRecipe)
                 props.fetchRecipeDetailsForUpdate(props.recipe)
-                console.log(props.recipeListState.selectedRecipe)
                 props.history.push(`/recipes/${props.recipe.recipe.id}`)
               }}
             />

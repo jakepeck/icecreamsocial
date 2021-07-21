@@ -4,9 +4,6 @@ import { BASE_URL } from '../globals'
 import { Card, Button, Input } from 'react-rainbow-components'
 
 const Register = (props) => {
-  console.log('Register component props:')
-  console.log(props)
-
   const [registerForm, handleRegisterForm] = useState({
     email: '',
     password: '',
@@ -16,12 +13,10 @@ const Register = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await Client.post(`${BASE_URL}/auth/register`, registerForm)
-      console.log(res)
+      await Client.post(`${BASE_URL}/auth/register`, registerForm)
       handleRegisterForm({ email: '', password: '', username: '' })
       props.history.push('/auth/login')
     } catch (error) {
-      console.log('register handleSubmit failed')
       console.log(error)
     }
   }

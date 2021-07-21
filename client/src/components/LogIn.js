@@ -11,8 +11,6 @@ const mapStateToProps = ({ appState }) => {
 }
 
 const LogIn = (props) => {
-  console.log('Login componetnts props')
-  console.log(props)
   const [loginForm, handleLoginForm] = useState({
     email: '',
     password: ''

@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
 const RecipeDetail = (props) => {
   const { recipe_id } = props.match.params
   const { fetchRecipeDetails } = props
-  console.log(props.recipeListState)
+
   useEffect(() => {
     fetchRecipeDetails(recipe_id)
   }, [recipe_id, fetchRecipeDetails])

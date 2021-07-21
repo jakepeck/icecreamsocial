@@ -6,6 +6,7 @@ import {
 } from '../store/actions/UserListActions'
 import { Card, Button } from 'react-rainbow-components'
 import store from '../store'
+import moment from 'moment'
 
 const mapStateToProps = ({ userListState }) => {
   return { userListState }
@@ -26,14 +27,12 @@ const UserList = (props) => {
     fetchUserList()
   }, [selectedUser, fetchUserList])
 
-  console.log(props)
-  console.log(store.getState())
-
   const usersMap = props.userListState.users.map((user, idx) => {
     return (
       <Card className="userCard" key={idx}>
         <h1>{user.username}</h1>
-        <p>{user.created_at}</p>
+        <p>Join Date: {moment(user.created_at).format('MMMM Do, YYYY')}</p>
+
         <Button
           onClick={() => {
             props.fetchUserDetails(user.id)

@@ -18,14 +18,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const RecipeList = (props) => {
-  console.log(props.recipeListState)
   const { fetchRecipeList } = props
 
   useEffect(() => {
     fetchRecipeList()
   }, [fetchRecipeList])
-
-  console.log(props)
 
   const recipesMap = props.recipeListState.recipes.map((recipe, idx) => {
     return (

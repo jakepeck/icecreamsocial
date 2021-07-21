@@ -25,11 +25,8 @@ const CreateRecipe = (props) => {
   const submitRecipe = async (e) => {
     e.preventDefault()
     try {
-      console.log(recipeFormData)
       const recipe = { poster_id: poster, ...recipeFormData }
-      console.log(recipe)
-      const res = await Client.post(`${BASE_URL}/recipes`, recipe)
-      console.log(res)
+      await Client.post(`${BASE_URL}/recipes`, recipe)
       props.history.push('/recipes')
     } catch (error) {
       console.log(error)

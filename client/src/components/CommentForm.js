@@ -31,14 +31,12 @@ const CommentForm = (props) => {
         commenter_id: props.appState.userCredentials.id,
         recipe_id: props.recipe_id
       }
-      console.log(commentFormData)
       props.postNewComment(
         commentFormData,
         props.appState.userCredentials.username
       )
       handleCommentForm({ content: '' })
     } catch (e) {
-      console.log('register handleSubmit failed')
       console.log(e)
     }
   }

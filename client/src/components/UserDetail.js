@@ -6,6 +6,7 @@ import {
 import React, { useEffect } from 'react'
 import { Card } from 'react-rainbow-components'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 const mapStateToProps = ({ userListState }) => {
   return { userListState }
@@ -19,11 +20,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const UserDetail = (props) => {
-  console.log(props)
   const { fetchUserDetails } = props
 
   useEffect(() => {
-    console.log('Products useEffect firing')
     fetchUserDetails(props.match.params.user_id)
   }, [props.match.params.user_id, fetchUserDetails])
 
@@ -34,7 +33,18 @@ const UserDetail = (props) => {
           <div className="userDetails">
             <h1>{props.userListState.selectedUser.user.username}</h1>
             <div>
-              <h2>{props.userListState.selectedUser.user.created_at}</h2>
+              <p>
+                Ice Cream Socialite Since:{' '}
+                {moment(
+                  props.userListState.selectedUser.user.created_at
+                ).format('MMMM Do, YYYY')}
+              </p>
+              <p>
+                Posts: {props.userListState.selectedUser.user_recipes.length}
+                <br />
+                Comments:{' '}
+                {props.userListState.selectedUser.user_comments.length}
+              </p>
               <h3>
                 Recent Recipes from{' '}
                 {props.userListState.selectedUser.user.username}
