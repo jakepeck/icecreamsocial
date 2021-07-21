@@ -26,10 +26,6 @@ const UserList = (props) => {
     fetchUserList()
   }, [selectedUser, fetchUserList])
 
-  // const pushToRecipePage = (recipeId) => {
-  //   props.history.push(`/recipes/${recipeId}`)
-  // }
-
   console.log(props)
   console.log(store.getState())
 

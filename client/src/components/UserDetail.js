@@ -29,15 +29,6 @@ const UserDetail = (props) => {
 
   return (
     <div>
-      {/* <button
-        onClick={() => {
-          props.history.goBack()
-          // props.fetchUserDetails(props.match.params.user_id)
-          // props.fetchUserDetails(null)
-        }}
-      >
-        Back
-      </button> */}
       {props.userListState.selectedUser !== null ? (
         <Card>
           <div className="userDetails">
@@ -82,7 +73,7 @@ const UserDetail = (props) => {
           </div>
         </Card>
       ) : (
-        'Click on a user to expand details'
+        'Error retrieving details for the selected user, please go back to the users page and press "View User Details" for the user you are trying to view.'
       )}
     </div>
   )

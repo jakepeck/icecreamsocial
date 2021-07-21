@@ -52,10 +52,8 @@ const UpdateRecipe = (props) => {
         recipe
       )
       console.log(res)
+      setRecipeFormData({ title: '', photo: '', content: '' })
       props.history.push(`/recipes`)
-      // setPosts([...posts, res.data])
-      // setRecipeFormData({ title: '', photo: '', content: '' })
-      // toggleCreatePostOpen(false)
     } catch (error) {
       console.log(error)
     }

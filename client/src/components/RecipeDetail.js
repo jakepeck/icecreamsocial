@@ -1,22 +1,8 @@
 import React, { useEffect } from 'react'
 import { Card } from 'react-rainbow-components'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import {
-//   faTasks,
-//   faShareAlt,
-//   faAngleDown
-// } from '@fortawesome/free-solid-svg-icons'
-// import { faHeart } from '@fortawesome/free-regular-svg-icons'
+
 import { Link } from 'react-router-dom'
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faStar } from '@fortawesome/free-regular-svg-icons'
-// import {
-//   faTrashAlt,
-//   faPencilAlt,
-//   faLocationArrow,
-//   faArrowDown
-// } from '@fortawesome/free-solid-svg-icons'
 import RecipeCardComments from './RecipeCardComments'
 import CommentForm from './CommentForm'
 import {
@@ -25,10 +11,6 @@ import {
 } from '../store/actions/RecipeListActions'
 import { connect } from 'react-redux'
 
-// const iconContainerStyles = {
-//   width: '2.5rem',
-//   height: '2.5rem'
-// }
 const mapStateToProps = ({ recipeListState, appState, commentListState }) => {
   return { recipeListState, appState, commentListState }
 }
@@ -49,13 +31,6 @@ const RecipeDetail = (props) => {
 
   return (
     <div>
-      {/* <button
-        onClick={() => {
-          props.history.goBack()
-        }}
-      >
-        Back
-      </button> */}
       {props.recipeListState.selectedRecipe !== null ? (
         <div className="rainbow-m-around_large">
           <Card
@@ -70,7 +45,6 @@ const RecipeDetail = (props) => {
                 {props.recipeListState.selectedRecipe.recipe_poster.username}
               </Link>
             }
-            // actions={<Button variant="neutral" label="Add" />}
           >
             <div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
               <img
@@ -80,9 +54,7 @@ const RecipeDetail = (props) => {
               <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
                 {props.recipeListState.selectedRecipe.recipe.title}{' '}
               </h1>
-              {/* <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
-                {props.recipeListState.selectedRecipe.recipe_poster.username}{' '}
-              </h1> */}
+
               <p>{props.recipeListState.selectedRecipe.recipe.content}</p>
               <br />
               <br />
@@ -99,38 +71,10 @@ const RecipeDetail = (props) => {
               <br />
               <br />
             </div>
-
-            {/* <div className="rainbow-p-right_large">
-              <ButtonIcon
-                variant="border-filled"
-                size="medium"
-                tooltip="Edit"
-                icon={<FontAwesomeIcon icon={faPencilAlt} />}
-              />
-            </div>
-            <div className="rainbow-p-right_large">
-              <ButtonIcon
-                variant="border-filled"
-                size="medium"
-                tooltip="Delete"
-                icon={<FontAwesomeIcon icon={faTrashAlt} />}
-              />
-            </div> */}
-
-            {props.appState.authenticated &&
-            props.appState.userCredentials.id ===
-              props.recipeListState.selectedRecipe.recipe_poster.id ? (
-              <div>
-                {' '}
-                <button>Delete Recipe</button> <button>Update Recipe</button>
-              </div>
-            ) : (
-              <div></div>
-            )}
           </Card>
         </div>
       ) : (
-        'selected recipe is null'
+        'Having trouble locating details for that recipe... Please go back to the main recipe list and click "View Details" again'
       )}
     </div>
   )
