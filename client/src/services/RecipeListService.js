@@ -26,3 +26,14 @@ export const SetSelectedRecipe = async (recipeId) => {
     throw e
   }
 }
+
+export const RemoveRecipe = async (recipeId) => {
+  try {
+    const res = await Client.delete(`/recipes/${recipeId}`)
+    console.log(res.data)
+    return res.data
+  } catch (e) {
+    console.log(e)
+    throw e
+  }
+}

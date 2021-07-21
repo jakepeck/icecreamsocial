@@ -43,6 +43,7 @@ function App(props) {
 
   return (
     <div className="App">
+      <Nav />
       <Switch>
         <Route exact path="/users/all" component={UserList} />
 
@@ -56,9 +57,7 @@ function App(props) {
         <Route exact path="/recipes/:recipe_id" component={RecipeDetail} />
       </Switch>
 
-      <footer>
-        <Nav />
-      </footer>
+      <footer></footer>
     </div>
   )
 }

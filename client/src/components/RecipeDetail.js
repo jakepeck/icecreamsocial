@@ -29,8 +29,8 @@ import { connect } from 'react-redux'
 //   width: '2.5rem',
 //   height: '2.5rem'
 // }
-const mapStateToProps = ({ recipeListState, appState }) => {
-  return { recipeListState, appState }
+const mapStateToProps = ({ recipeListState, appState, commentListState }) => {
+  return { recipeListState, appState, commentListState }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -42,19 +42,20 @@ const mapDispatchToProps = (dispatch) => {
 const RecipeDetail = (props) => {
   const { recipe_id } = props.match.params
   const { fetchRecipeDetails } = props
+  console.log(props.recipeListState)
   useEffect(() => {
     fetchRecipeDetails(recipe_id)
   }, [recipe_id, fetchRecipeDetails])
 
   return (
     <div>
-      <button
+      {/* <button
         onClick={() => {
           props.history.goBack()
         }}
       >
         Back
-      </button>
+      </button> */}
       {props.recipeListState.selectedRecipe !== null ? (
         <div className="rainbow-m-around_large">
           <Card
@@ -83,14 +84,22 @@ const RecipeDetail = (props) => {
                 {props.recipeListState.selectedRecipe.recipe_poster.username}{' '}
               </h1> */}
               <p>{props.recipeListState.selectedRecipe.recipe.content}</p>
+              <br />
+              <br />
+              {props.recipeListState.selectedRecipe.comments ? (
+                <RecipeCardComments
+                  comments={props.recipeListState.selectedRecipe.comments}
+                />
+              ) : null}
+
+              <CommentForm
+                recipe_id={props.recipeListState.selectedRecipe.recipe.id}
+              />
+              <br />
+              <br />
+              <br />
             </div>
 
-            <RecipeCardComments
-              comments={props.recipeListState.selectedRecipe.comments}
-            />
-            <CommentForm
-              recipe_id={props.recipeListState.selectedRecipe.recipe.id}
-            />
             {/* <div className="rainbow-p-right_large">
               <ButtonIcon
                 variant="border-filled"

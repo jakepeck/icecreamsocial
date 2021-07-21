@@ -29,7 +29,7 @@ const UserDetail = (props) => {
 
   return (
     <div>
-      <button
+      {/* <button
         onClick={() => {
           props.history.goBack()
           // props.fetchUserDetails(props.match.params.user_id)
@@ -37,7 +37,7 @@ const UserDetail = (props) => {
         }}
       >
         Back
-      </button>
+      </button> */}
       {props.userListState.selectedUser !== null ? (
         <Card>
           <div className="userDetails">

@@ -45,5 +45,16 @@
 }
 
 .recipeDetail p {
-  white-space: pre-wrap;
+  white-space: pre-line;
+  text-align: left;
+  margin: 0 1em;
+}
+
+.nav-bar {
+  background-color: cornflowerblue;
+}
+
+.recipeCard p {
+  text-align: left;
+  margin: 0 1em;
 }

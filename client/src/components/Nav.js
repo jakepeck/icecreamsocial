@@ -1,6 +1,5 @@
-import { NavLink, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import React from 'react'
-// import { Route, Switch } from 'react-router-dom'
 import store from '../store'
 import { SET_UNAUTHENTICATED } from '../store/types'
 import { connect } from 'react-redux'
@@ -8,6 +7,7 @@ import {
   LoadUserList,
   LoadSelectedUser
 } from '../store/actions/UserListActions'
+import { Button } from 'react-rainbow-components'
 
 const mapStateToProps = ({ appState, userListState }) => {
   return { appState, userListState }
@@ -44,26 +44,31 @@ const Nav = (props) => {
     history.push(`/users/${props.appState.userCredentials.id}`)
   }
 
+  const handleClickRecipes = (e) => {
+    e.preventDefault()
+    history.push(`/recipes`)
+  }
+
+  const handleClickUsers = (e) => {
+    e.preventDefault()
+    history.push('/users/all')
+  }
+
+  const handleClickPost = (e) => {
+    e.preventDefault()
+    history.push('/createrecipe')
+  }
+
   return (
     <div className="nav-bar">
       <div className="nav-links">
-        <NavLink className="nav-link" to="/recipes">
-          Recipes
-        </NavLink>
-        <NavLink className="nav-link" to="/users/all">
-          Users
-        </NavLink>
-        {/* <NavLink className="nav-link" to="/reviews">
-          Reviews
-        </NavLink>
-        <NavLink className="nav-link" to="/comments">
-          Comments
-        </NavLink> */}
-        <NavLink className="nav-link" to="/createrecipe">
-          Post
-        </NavLink>
+        <Button onClick={handleClickRecipes}>Recipes</Button>
+        <Button onClick={handleClickUsers}>Users</Button>
+        {props.appState.authenticated ? (
+          <Button onClick={handleClickPost}>Create a Post!</Button>
+        ) : null}
 
-        <button
+        <Button
           onClick={
             !props.appState.authenticated
               ? handleClickRegister
@@ -72,14 +77,13 @@ const Nav = (props) => {
           className="nav-btn"
         >
           {!props.appState.authenticated ? 'Sign Up!' : 'My Account'}
-        </button>
-        <button
-          // onClick={!props.authenticated ? handleClickLogIn : props.logOut}
+        </Button>
+        <Button
           onClick={!props.appState.authenticated ? handleClickLogIn : logOut}
           className="nav-btn"
         >
           {!props.appState.authenticated ? 'Log In' : 'Log Out'}
-        </button>
+        </Button>
       </div>
     </div>
   )

@@ -4,13 +4,14 @@ import { Card, Button, ButtonIcon, ButtonGroup } from 'react-rainbow-components'
 // import CommentForm from './CommentForm'
 import RecipeCardComments from './RecipeCardComments'
 import {
+  DeleteRecipeFromRecipes,
   LoadRecipeList,
   LoadSelectedRecipe,
   LoadSelectedRecipeForUpdate
 } from '../store/actions/RecipeListActions'
 import { connect } from 'react-redux'
-import axios from 'axios'
-import { BASE_URL } from '../globals'
+// import axios from 'axios'
+// import { BASE_URL } from '../globals'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faStar } from '@fortawesome/free-regular-svg-icons'
 import {
@@ -33,7 +34,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchRecipeList: () => dispatch(LoadRecipeList()),
     fetchRecipeDetails: (recipeId) => dispatch(LoadSelectedRecipe(recipeId)),
     fetchRecipeDetailsForUpdate: (recipe) =>
-      dispatch(LoadSelectedRecipeForUpdate(recipe))
+      dispatch(LoadSelectedRecipeForUpdate(recipe)),
+    deleteRecipe: (recipeId) => dispatch(DeleteRecipeFromRecipes(recipeId))
   }
 }
 
@@ -48,8 +50,9 @@ const RecipeCard = (props) => {
   const deleteHelper = async (recipe_id) => {
     console.log('delete recipes helpers called')
     console.log(recipe_id)
-    const res = await axios.delete(`${BASE_URL}/recipes/${recipe_id}`)
-    console.log(res)
+    // const res = await axios.delete(`${BASE_URL}/recipes/${recipe_id}`)
+    props.deleteRecipe(recipe_id)
+    // console.log(res)
   }
 
   //   return (
