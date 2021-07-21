@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { useState } from 'react'
 import { AddCommentsToSelectedRecipe } from '../store/actions/RecipeListActions'
+import { Button, Input } from 'react-rainbow-components'
 const mapStateToProps = ({ reviewListState, commentListState, appState }) => {
   return { reviewListState, commentListState, appState }
 }
@@ -44,9 +45,8 @@ const CommentForm = (props) => {
 
   return (
     <div>
-      <h1>Add Comment Form</h1>
       <form onSubmit={handleSubmit}>
-        <input
+        <Input
           type="text"
           name="content"
           placeholder="Enter comment here"
@@ -54,16 +54,17 @@ const CommentForm = (props) => {
           onChange={handleChange}
           required
         />
+        <br />
 
-        <button
+        <Button
           disabled={!commentForm.content}
-          size="large"
+          size="small"
           color="teal"
           animated="fade"
           onClick={handleSubmit}
         >
           Post Comment
-        </button>
+        </Button>
       </form>
     </div>
   )

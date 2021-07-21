@@ -1,4 +1,4 @@
-import { Card } from 'react-rainbow-components'
+import { Card, Input, Button } from 'react-rainbow-components'
 import { connect } from 'react-redux'
 // import Client from '../services'
 import { useState } from 'react'
@@ -21,14 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const UpdateRecipe = (props) => {
-  console.log('update recipes props:')
-  console.log(props)
   const poster = props.appState.userCredentials.id
-  // useEffect(() => {
-  //   props.fetchRecipeDetails(props.match.params.recipe_id)
-  // }, [props.match.params.recipe_id])
-  console.log(props.match.params)
-  console.log(props.recipeListState.selectedRecipe)
 
   const [recipeFormData, setRecipeFormData] = useState({
     title: props.recipeListState.selectedRecipe.recipe.title || '',
@@ -61,29 +54,32 @@ const UpdateRecipe = (props) => {
 
   return (
     <div>
-      <Card>
+      <Card className="formCard">
         <h1>Update your recipe!</h1>
 
         <form className="recipeCreateForm" onSubmit={submitRecipeUpdate}>
           <label>Title</label>
-          <input
+          <br />
+          <Input
             onChange={handleChange}
             type="text"
             name="title"
             value={recipeFormData.title}
             placeholder={props.recipeListState.selectedRecipe.recipe.title}
           />
-
+          <br />
           <label>Image URL</label>
-          <input
+          <br />
+          <Input
             onChange={handleChange}
             type="text"
             name="photo"
             value={recipeFormData.photo}
             placeholder={props.recipeListState.selectedRecipe.recipe.photo}
           />
-
+          <br />
           <label>Body</label>
+          <br />
           <textarea
             onChange={handleChange}
             type="text"
@@ -91,8 +87,8 @@ const UpdateRecipe = (props) => {
             value={recipeFormData.content}
             placeholder={props.recipeListState.selectedRecipe.recipe.content}
           />
-
-          <button
+          <br />
+          <Button
             onClick={submitRecipeUpdate}
             disabled={
               !recipeFormData.title ||
@@ -103,7 +99,8 @@ const UpdateRecipe = (props) => {
             fluid
           >
             Update Your Recipe
-          </button>
+          </Button>
+          <br />
         </form>
       </Card>
     </div>

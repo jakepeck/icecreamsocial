@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-image: url('https://i.imgur.com/NzANSfK.jpg');
+  /* background-image: url('https://i.imgur.com/NzANSfK.jpg'); */
   height: 100vh;
 }
 
@@ -33,6 +33,27 @@
 .recipeCreateForm {
   display: flex;
   flex-direction: column;
+  max-width: 94vw;
+  margin: 0 auto;
+}
+
+.formCard {
+  max-width: 90vw;
+  margin: 1em auto;
+  padding: 1em;
+}
+
+.userListHeaderCard {
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 1em;
+  text-align: left;
+}
+
+.userCard {
+  max-width: 90vw;
+  margin: 0.1em auto;
+  padding: 1em;
 }
 
 @keyframes App-logo-spin {
@@ -51,10 +72,39 @@
 }
 
 .nav-bar {
-  background-color: cornflowerblue;
+  background-color: rgb(56, 180, 220);
 }
 
 .recipeCard p {
   text-align: left;
   margin: 0 1em;
+}
+
+.recipeCard {
+  max-width: 94vw;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-bar {
+  margin: 0 auto;
+  padding: 1em;
+}
+
+textarea {
+  height: 30vh;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.recipeCard img {
+  width: 100%;
 }

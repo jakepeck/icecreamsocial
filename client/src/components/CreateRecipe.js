@@ -1,4 +1,4 @@
-import { Button, Card } from 'react-rainbow-components'
+import { Button, Card, Input } from 'react-rainbow-components'
 import { connect } from 'react-redux'
 import Client from '../services'
 import { useState } from 'react'
@@ -38,29 +38,32 @@ const CreateRecipe = (props) => {
 
   return (
     <div>
-      <Card>
+      <Card className="formCard">
         <h1>Post Your Recipe!</h1>
 
         <form className="recipeCreateForm" onSubmit={submitRecipe}>
           <label>Recipe Title: </label>
-          <input
+          <br />
+          <Input
             onChange={handleChange}
             type="text"
             name="title"
             value={recipeFormData.title}
             placeholder="Enter a title for your delicious recipe!"
           />
-
+          <br />
           <label>Recipe Image URL: </label>
-          <input
+          <br />
+          <Input
             onChange={handleChange}
             type="text"
             name="photo"
             value={recipeFormData.photo}
             placeholder="Enter an image url here to show off your awesome creation"
           />
-
+          <br />
           <label>Recipe Content: </label>
+          <br />
           <textarea
             onChange={handleChange}
             type="text"
@@ -68,6 +71,7 @@ const CreateRecipe = (props) => {
             value={recipeFormData.content}
             placeholder="Tell us about your recipe! Add ingredients, processes, expected time and all the other fun details here!"
           />
+          <br />
 
           <Button
             onClick={submitRecipe}

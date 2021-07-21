@@ -63,6 +63,8 @@ const Nav = (props) => {
   return (
     <div className="nav-bar">
       <div className="nav-links">
+        <img src="https://i.imgur.com/tFH49uW.png" width="150" alt="logo"></img>
+
         <Button onClick={handleClickRecipes}>Recipes</Button>
         <Button onClick={handleClickUsers}>Users</Button>
         {props.appState.authenticated ? (

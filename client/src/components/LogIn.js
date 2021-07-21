@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, Button } from 'react-rainbow-components'
+import { Card, Button, Input } from 'react-rainbow-components'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import { SET_AUTHENTICATED, SET_USER_CREDENTIALS } from '../store/types'
@@ -38,29 +38,30 @@ const LogIn = (props) => {
   }
 
   return (
-    <Card>
-      <h1>Log-In Below!</h1>
+    <Card className="formCard">
+      <h1>Log-In to IceCreamSocial!</h1>
       <form className="recipeCreateForm" onSubmit={handleSubmit}>
         <label>Email: </label>
-        <input
+        <br />
+        <Input
           type="email"
           name="email"
           placeholder="jane@mail.com"
           value={loginForm.email}
           onChange={handleChange}
-          required
         />
+        <br />
 
         <label>Password: </label>
-        <input
+        <br />
+        <Input
           type="password"
           name="password"
           placeholder="Your Password"
           value={loginForm.password}
           onChange={handleChange}
-          required
         />
-
+        <br />
         <Button
           disabled={!loginForm.email || !loginForm.password}
           size="small"

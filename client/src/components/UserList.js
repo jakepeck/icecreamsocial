@@ -31,7 +31,7 @@ const UserList = (props) => {
 
   const usersMap = props.userListState.users.map((user, idx) => {
     return (
-      <Card key={idx}>
+      <Card className="userCard" key={idx}>
         <h1>{user.username}</h1>
         <p>{user.created_at}</p>
         <Button
@@ -48,6 +48,9 @@ const UserList = (props) => {
 
   return (
     <div>
+      <Card className="userListHeaderCard">
+        <h1>Current Ice Cream Socialites:</h1>
+      </Card>
       <div className="grid">{usersMap}</div>
     </div>
   )

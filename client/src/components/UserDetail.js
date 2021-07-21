@@ -30,7 +30,7 @@ const UserDetail = (props) => {
   return (
     <div>
       {props.userListState.selectedUser !== null ? (
-        <Card>
+        <Card className="userCard">
           <div className="userDetails">
             <h1>{props.userListState.selectedUser.user.username}</h1>
             <div>
