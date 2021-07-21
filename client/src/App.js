@@ -18,18 +18,11 @@ import UpdateRecipe from './components/UpdateRecipe'
 
 function App(props) {
   const getToken = async () => {
-    console.log('getting token')
     let token = localStorage.getItem('token')
     if (token) {
-      console.log(token)
-      console.log(localStorage)
       const res = await axios.get(`${BASE_URL}/auth/login`)
-      console.log(res)
-      console.log('token approved')
       store.dispatch({ type: SET_AUTHENTICATED })
       store.dispatch({ type: SET_USER_CREDENTIALS, payload: res.data })
-    } else {
-      console.log('no token')
     }
   }
 

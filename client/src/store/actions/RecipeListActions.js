@@ -28,8 +28,6 @@ export const LoadSelectedRecipe = (recipeId) => {
   return async (dispatch) => {
     try {
       const recipe = await SetSelectedRecipe(recipeId)
-
-      console.log('load selected recipe is ', recipe)
       dispatch({ type: SET_SELECTED_RECIPE, payload: recipe })
     } catch (e) {
       console.log(e)
@@ -41,7 +39,6 @@ export const LoadSelectedRecipe = (recipeId) => {
 export const LoadSelectedRecipeForUpdate = (recipe) => {
   return async (dispatch) => {
     try {
-      console.log('load selected recipe is ', recipe)
       dispatch({ type: SET_SELECTED_RECIPE, payload: recipe })
     } catch (e) {
       console.log(e)
@@ -53,7 +50,6 @@ export const LoadSelectedRecipeForUpdate = (recipe) => {
 export const AddCommentsToSelectedRecipe = (comment, username) => {
   return async (dispatch) => {
     try {
-      console.log(comment)
       const myComment = await AddComment(comment)
       const myNewComment = { comment: myComment, commenter_username: username }
       dispatch({ type: ADD_COMMENT_TO_RECIPE, payload: myNewComment })
@@ -67,7 +63,6 @@ export const DeleteRecipeFromRecipes = (recipeId) => {
   return async (dispatch) => {
     try {
       const recipeToDelete = await RemoveRecipe(recipeId)
-      console.log(recipeToDelete)
       dispatch({ type: DELETE_RECIPE, payload: recipeToDelete.payload })
     } catch (e) {
       console.log(e)

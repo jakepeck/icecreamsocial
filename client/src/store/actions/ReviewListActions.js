@@ -1,11 +1,13 @@
-import { GetReviewList, SetSelectedReview } from '../../services/ReviewListService'
+import {
+  GetReviewList,
+  SetSelectedReview
+} from '../../services/ReviewListService'
 import { GET_REVIEW_LIST, SET_SELECTED_REVIEW } from '../types'
 
 export const LoadReviewList = () => {
   return async (dispatch) => {
     try {
       const reviewList = await GetReviewList()
-      console.log('Load review list called')
       dispatch({ type: GET_REVIEW_LIST, payload: reviewList })
     } catch (e) {
       console.log(e)
@@ -18,9 +20,7 @@ export const LoadSelectedReview = (reviewId) => {
   return async (dispatch) => {
     try {
       const review = await SetSelectedReview(reviewId)
-      console.log('load selected r eview  called')
-      console.log(review)
-      dispatch({ type: SET_SELECTED_REVIEW, payload: review})
+      dispatch({ type: SET_SELECTED_REVIEW, payload: review })
     } catch (e) {
       console.log(e)
       throw e
