@@ -61,7 +61,7 @@ const UserDetail = (props) => {
                   )}
                 </div>
               ) : (
-                <h4>No recipes posted by this member yet</h4>
+                <p>No recipes posted by this member yet</p>
               )}
 
               <h3>
@@ -77,7 +77,7 @@ const UserDetail = (props) => {
                   )}
                 </div>
               ) : (
-                <h4>No comments posted by this member yet</h4>
+                <p>No comments posted by this member yet</p>
               )}
             </div>
           </div>

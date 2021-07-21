@@ -5,7 +5,6 @@ import {
   LoadSelectedUser
 } from '../store/actions/UserListActions'
 import { Card, Button } from 'react-rainbow-components'
-import store from '../store'
 import moment from 'moment'
 
 const mapStateToProps = ({ userListState }) => {

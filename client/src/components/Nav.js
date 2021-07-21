@@ -68,7 +68,7 @@ const Nav = (props) => {
         <Button onClick={handleClickRecipes}>Recipes</Button>
         <Button onClick={handleClickUsers}>Users</Button>
         {props.appState.authenticated ? (
-          <Button onClick={handleClickPost}>Create a Post!</Button>
+          <Button onClick={handleClickPost}>New Post</Button>
         ) : null}
 
         <Button
