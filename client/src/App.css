@@ -81,8 +81,14 @@
 }
 
 .recipeCard {
-  max-width: 94vw;
+  max-width: 64vw;
   margin: 0 auto;
+}
+
+.recipeDetail {
+  max-width: 84vw;
+  margin: 0 auto;
+  padding: 1em;
 }
 
 .nav-links {

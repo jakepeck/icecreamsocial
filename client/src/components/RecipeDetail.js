@@ -63,10 +63,12 @@ const RecipeDetail = (props) => {
                   comments={props.recipeListState.selectedRecipe.comments}
                 />
               ) : null}
+              {props.appState.authenticated ? (
+                <CommentForm
+                  recipe_id={props.recipeListState.selectedRecipe.recipe.id}
+                />
+              ) : null}
 
-              <CommentForm
-                recipe_id={props.recipeListState.selectedRecipe.recipe.id}
-              />
               <br />
               <br />
               <br />
