@@ -16,11 +16,17 @@ This application was built using the following technologies: Python/PostgreSQL/F
 
 The database was created/managed using PostgreSQL (psql), in tandem with Flask SQLAlchemy. A RESTful API was created and called on using Axios. Front-end was built out using React Redux (with mapping of dispatch and props) Thunk / Functional Components/ CSS / HTML & JSX. The server framework was built using Python Flask. Additional developer tools leveraged were VS Code, Github, Insomnia, and React-Rainbow for styling.
 ***
+### *Screenshots*
+![screenshot2](https://i.imgur.com/x0lrz82.png)
+![screenshot3](https://i.imgur.com/nBB1lZC.png)
+![screenshot1](https://i.imgur.com/deKbu7w.png)
+***
+
 ### *ERD*
-![ERD](https://i.imgur.com/OJsr0L2.jpg)
+![ERD](https://i.imgur.com/PEQZVhW.png)
 ***
 ### *CHD*
-![CHD](https://i.imgur.com/LKpLokN.jpg)
+![CHD](https://i.imgur.com/ceLZiO0.png)
 ***
 ### *Getting Started*
 
