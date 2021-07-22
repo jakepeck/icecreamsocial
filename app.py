@@ -76,4 +76,4 @@ api.add_resource(ReviewDetail, '/reviews/<int:review_id>')
 
 # DEPLOYMENT CONFIG
 if __name__ == '__main__':
-    app.run
+    app.run()
