@@ -50,7 +50,6 @@ const CommentForm = (props) => {
           placeholder="Enter comment here"
           value={commentForm.content}
           onChange={handleChange}
-          required
         />
         <br />
 

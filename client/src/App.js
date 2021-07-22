@@ -42,6 +42,7 @@ function App(props) {
         <Route exact path="/createrecipe" component={CreateRecipe} />
         <Route exact path="/recipes" component={RecipeList} />
         <Route exact path="/recipes/:recipe_id" component={RecipeDetail} />
+        <Route path="/" component={RecipeList} />
       </Switch>
 
       <footer></footer>

@@ -27,24 +27,24 @@ cors = CORS(app)
 api = Api(app)
 
 # Deployment configuration
-# DATABASE_URL = os.getenv('DATABASE_URL')
-# if DATABASE_URL:
-#     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL.replace(
-#         "://", "ql://", 1)
-#     app.config['SQLALCHEMY_ECHO'] = False
-#     app.env = 'production'
-# else:
-#     app.debug = True
-#     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost:5432/icecreamsocial_db'
-#     app.config['SQLALCHEMY_ECHO'] = True
+DATABASE_URL = os.getenv('DATABASE_URL')
+if DATABASE_URL:
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL.replace(
+        "://", "ql://", 1)
+    app.config['SQLALCHEMY_ECHO'] = False
+    app.env = 'production'
+else:
+    app.debug = True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost:5432/icecreamsocial_db'
+    app.config['SQLALCHEMY_ECHO'] = True
 
 
-# Init db and migrate here
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://localhost:5432/icecreamsocial_db"
-app.config['SQLALCHEMY_ECHO'] = True
+# # Init db and migrate here
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://localhost:5432/icecreamsocial_db"
+# app.config['SQLALCHEMY_ECHO'] = True
 
 # Init db and migrate here
 
@@ -70,10 +70,10 @@ api.add_resource(Reviews, '/reviews')
 api.add_resource(ReviewDetail, '/reviews/<int:review_id>')
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-# # DEPLOYMENT CONFIG
 # if __name__ == '__main__':
-#     app.run
+#     app.run(debug=True)
+
+
+# DEPLOYMENT CONFIG
+if __name__ == '__main__':
+    app.run
