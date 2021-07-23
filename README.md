@@ -2,7 +2,7 @@
 ![image](https://i.imgur.com/nyJDNaC.jpg)
 
 ### Creator: Jake Peck | [Trello Board](https://trello.com/b/Ho7KlCzQ/icecreamsocial)
-#### [Portfolio](https://jakepeck.dev) [LinkedIn]( https://www.linkedin.com/in/jake-peck/) | [GitHub](https://github.com/jakepeck)
+#### [Deployed App](https://brave-aryabhata-794751.netlify.app/) [Portfolio](https://jakepeck.dev) [LinkedIn]( https://www.linkedin.com/in/jake-peck/) | [GitHub](https://github.com/jakepeck)
 
 ***
 #### Date: 7/12/2021
